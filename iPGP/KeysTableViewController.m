@@ -7,59 +7,63 @@
 //
 
 #import "KeysTableViewController.h"
+#import "KeyDetailsTableViewController.h"
 #import "KeyTableViewCell.h"
 #import "UIApplicationAdditions.h"
+#import "ObjectivePGP/ObjectivePGP.h"
 
 @implementation KeysTableViewController
 
-- (void)loadKeysFromDefaults {
-    for (NSString *asciiKey in [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"]) {
-        [[[UIApplication sharedApplication] objectivePGP] importKeysFromData:[asciiKey dataUsingEncoding:NSASCIIStringEncoding] allowDuplicates:NO];
-        NSLog(@"Key: %@", asciiKey);
-    }
-    
-    NSUInteger count = keys.count;
-    
-    keys = [[[UIApplication sharedApplication] objectivePGP] keys];
-    
-    NSLog(@"Keys: %@", keys);
-    for(PGPKey *k in keys) {
-        NSLog(@"%@", [k.keyID shortKey]);
-    }
-    
-    if (count != keys.count) {
-        [self.tableView reloadData];
-    }
+- (IBAction)showOptions {
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"New Key" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL];
+    UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"Generate new Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // Show new key view controller
+    }];
+    UIAlertAction *importAction = [UIAlertAction actionWithTitle:@"Import ASCII armored Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UINavigationController *nc = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyInputTableViewControllerContainer"];
+        KeyInputTableViewController *kitvc = nc.viewControllers[0];
+        kitvc.delegate = self;
+        [self presentViewController:nc animated:YES completion:NULL];
+    }];
+    [ac addAction:cancelAction];
+    [ac addAction:newAction];
+    [ac addAction:importAction];
+    [self presentViewController:ac animated:YES completion:NULL];
 }
 
+#pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-    
-    [self loadKeysFromDefaults];
+    keys = [[[UIApplication sharedApplication] objectivePGP] keys].mutableCopy;
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    NSLog(@"Loaded keys: %@", [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"]);
-    
-    [self loadKeysFromDefaults];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - KeyInputTableViewController Delegate
+
+- (void)keyInputTableViewController:(KeyInputTableViewController *)keyInputTableViewController didFinishWithKey:(PGPKey *)key {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    NSData *newKeyData = [[[UIApplication sharedApplication] objectivePGP] exportKey:key armored:YES];
+    NSMutableArray *keyArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"].mutableCopy;
+    [keyArray addObject:[[NSString alloc] initWithData:newKeyData encoding:NSASCIIStringEncoding]];
+    [[NSUserDefaults standardUserDefaults] setObject:keyArray forKey:@"keys"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [keys addObject:key];
+    [[[UIApplication sharedApplication] objectivePGP] importKeysFromData:newKeyData allowDuplicates:NO];
+    
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:keys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)keyInputTableViewControllerDidCancel:(KeyInputTableViewController *)keyInputTableViewController {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Table view data source
@@ -72,7 +76,6 @@
     return keys.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KeyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
@@ -83,49 +86,10 @@
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    KeyDetailsTableViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyDetailsTableViewController"];
+    c.key = keys[indexPath.row];
+    [self.navigationController pushViewController:c animated:YES];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

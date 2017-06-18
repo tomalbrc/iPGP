@@ -12,10 +12,52 @@
 
 @implementation AppDelegate
 
+- (NSArray *)loadKeysFromDefaults {
+    for (NSString *asciiKey in [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"]) {
+        [[[UIApplication sharedApplication] objectivePGP] importKeysFromData:[asciiKey dataUsingEncoding:NSASCIIStringEncoding] allowDuplicates:NO];
+        NSLog(@"Key: %ld", asciiKey.length);
+    }
+    
+    NSArray *keys = [[[UIApplication sharedApplication] objectivePGP] keys];
+    
+    NSLog(@"Keys: %@", keys);
+    for(PGPKey *k in keys) {
+        NSLog(@"%@", [k.keyID shortKey]);
+    }
+    
+    return keys;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    if (![[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"]) {
+    
+    // This portion is for debugging
+    double internalVersion = 1.0;
+    if (![[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"] || [[NSUserDefaults standardUserDefaults] doubleForKey:@"version"] < internalVersion) {
+        [[NSUserDefaults standardUserDefaults] setDouble:internalVersion forKey:@"version"];
         [[NSUserDefaults standardUserDefaults] setObject:@[] forKey:@"keys"];
     }
+    // end
+    
+    
+    UIColor *colorBars = [UIColor colorWithWhite:0.96f alpha:1.f];
+    UIColor *colorButtons = [UIColor colorWithRed:0x62/255.f green:0x00/255.f blue:0xea
+                      /255.f alpha:1.f];
+    
+    //[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class], [UIToolbar class]]] setTintColor:[UIColor whiteColor]];
+
+    [self loadKeysFromDefaults];
+    
+    [[UITabBar appearance] setTintColor:colorButtons];
+    [[UINavigationBar appearance] setTintColor:colorButtons];
+    
+    [[UITabBar appearance] setBarTintColor:colorBars];
+    [[UINavigationBar appearance] setBarTintColor:colorBars];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blackColor}];
+    [[UIBarButtonItem appearance] setTintColor:colorButtons];
+    [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:0.93f alpha:1.f]];
+    
+    [[UIButton appearance] setTintColor:colorButtons];
     
     return YES;
 }

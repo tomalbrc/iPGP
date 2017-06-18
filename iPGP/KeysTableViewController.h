@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeyInputTableViewController.h"
 
-@interface KeysTableViewController : UITableViewController {
-    NSArray *keys;
+
+@interface KeysTableViewController : UITableViewController <KeyInputTableViewControllerDelegate> {
+    NSMutableArray *keys;
 }
 
 @end

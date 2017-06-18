@@ -11,12 +11,12 @@
 
 #import <ObjectivePGP/ObjectivePGP.h>
 
-@interface UIApplication (aditions)
+@interface UIApplication (additions)
 - (NSURL *)applicationDocumentsDirectory;
 - (ObjectivePGP *)objectivePGP;
 @end
 
-@implementation UIApplication (aditions)
+@implementation UIApplication (additions)
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                    inDomains:NSUserDomainMask] lastObject];

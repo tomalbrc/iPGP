@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1D1A69B481DC1651AEE86B76 /* libPods-iPGP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 358E63E5450E0BD71D78F766 /* libPods-iPGP.a */; };
+		9A0EE2CD1E9DCFA3009EFE08 /* RecipientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE2CC1E9DCFA3009EFE08 /* RecipientsTableViewController.m */; };
+		9A14B4D11EA17450006F1D03 /* NewKeyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */; };
+		9A14B4D41EA2444D006F1D03 /* KeyDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */; };
 		9A184D611E9258CB004E1211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D601E9258CB004E1211 /* main.m */; };
 		9A184D641E9258CB004E1211 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D631E9258CB004E1211 /* AppDelegate.m */; };
-		9A184D671E9258CB004E1211 /* EncryptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D661E9258CB004E1211 /* EncryptViewController.m */; };
-		9A184D6A1E9258CB004E1211 /* DecryptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D691E9258CB004E1211 /* DecryptViewController.m */; };
 		9A184D6D1E9258CB004E1211 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A184D6B1E9258CB004E1211 /* Main.storyboard */; };
 		9A184D6F1E9258CB004E1211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A184D6E1E9258CB004E1211 /* Assets.xcassets */; };
 		9A184D721E9258CB004E1211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A184D701E9258CB004E1211 /* LaunchScreen.storyboard */; };
+		9A3CC2E61E9D3E550023603B /* EncryptTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CC2E51E9D3E550023603B /* EncryptTableViewController.m */; };
+		9A6F82E31E9DDB5700CB563B /* DecryptTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F82E21E9DDB5700CB563B /* DecryptTableViewController.m */; };
 		9A77EC3F1E993687002AB197 /* KeyInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */; };
 		9AAC73541E992B66006577E2 /* KeysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC73531E992B66006577E2 /* KeysTableViewController.m */; };
 		9AAC73571E992DFB006577E2 /* KeyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC73561E992DFB006577E2 /* KeyTableViewCell.m */; };
@@ -24,21 +27,27 @@
 		358E63E5450E0BD71D78F766 /* libPods-iPGP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7907BBF2B3E8102E7D4F3744 /* Pods-iPGP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.release.xcconfig"; sourceTree = "<group>"; };
 		7E2EA57A0A1C5E9B6C61B33E /* Pods-iPGP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.debug.xcconfig"; sourceTree = "<group>"; };
+		9A0EE2CB1E9DCFA3009EFE08 /* RecipientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientsTableViewController.h; sourceTree = "<group>"; };
+		9A0EE2CC1E9DCFA3009EFE08 /* RecipientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientsTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		9A14B4CF1EA17450006F1D03 /* NewKeyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewKeyTableViewController.h; sourceTree = "<group>"; };
+		9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewKeyTableViewController.m; sourceTree = "<group>"; };
+		9A14B4D21EA2444C006F1D03 /* KeyDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyDetailsTableViewController.h; sourceTree = "<group>"; };
+		9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyDetailsTableViewController.m; sourceTree = "<group>"; };
 		9A184D5C1E9258CB004E1211 /* iPGP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPGP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A184D601E9258CB004E1211 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A184D621E9258CB004E1211 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9A184D631E9258CB004E1211 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9A184D651E9258CB004E1211 /* EncryptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptViewController.h; sourceTree = "<group>"; };
-		9A184D661E9258CB004E1211 /* EncryptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncryptViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		9A184D681E9258CB004E1211 /* DecryptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecryptViewController.h; sourceTree = "<group>"; };
-		9A184D691E9258CB004E1211 /* DecryptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecryptViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		9A184D631E9258CB004E1211 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; wrapsLines = 0; };
 		9A184D6C1E9258CB004E1211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A184D6E1E9258CB004E1211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A184D711E9258CB004E1211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A184D731E9258CB004E1211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A184D791E93C87D004E1211 /* UIApplicationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIApplicationAdditions.h; sourceTree = "<group>"; };
+		9A3CC2E41E9D3E550023603B /* EncryptTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptTableViewController.h; sourceTree = "<group>"; };
+		9A3CC2E51E9D3E550023603B /* EncryptTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		9A6F82E11E9DDB5700CB563B /* DecryptTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecryptTableViewController.h; sourceTree = "<group>"; };
+		9A6F82E21E9DDB5700CB563B /* DecryptTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecryptTableViewController.m; sourceTree = "<group>"; };
 		9A77EC3D1E993687002AB197 /* KeyInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyInputTableViewController.h; sourceTree = "<group>"; };
-		9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyInputTableViewController.m; sourceTree = "<group>"; };
+		9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyInputTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		9AAC73521E992B66006577E2 /* KeysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeysTableViewController.h; sourceTree = "<group>"; };
 		9AAC73531E992B66006577E2 /* KeysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeysTableViewController.m; sourceTree = "<group>"; };
 		9AAC73551E992DFB006577E2 /* KeyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyTableViewCell.h; sourceTree = "<group>"; };
@@ -66,6 +75,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9A0EE2C81E9DCF24009EFE08 /* Keys MVC */ = {
+			isa = PBXGroup;
+			children = (
+				9AAC73521E992B66006577E2 /* KeysTableViewController.h */,
+				9AAC73531E992B66006577E2 /* KeysTableViewController.m */,
+				9AAC73551E992DFB006577E2 /* KeyTableViewCell.h */,
+				9AAC73561E992DFB006577E2 /* KeyTableViewCell.m */,
+				9A77EC3D1E993687002AB197 /* KeyInputTableViewController.h */,
+				9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */,
+				9A14B4CF1EA17450006F1D03 /* NewKeyTableViewController.h */,
+				9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */,
+				9A14B4D21EA2444C006F1D03 /* KeyDetailsTableViewController.h */,
+				9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */,
+			);
+			name = "Keys MVC";
+			sourceTree = "<group>";
+		};
+		9A0EE2C91E9DCF2B009EFE08 /* Encrypt MVC */ = {
+			isa = PBXGroup;
+			children = (
+				9A3CC2E41E9D3E550023603B /* EncryptTableViewController.h */,
+				9A3CC2E51E9D3E550023603B /* EncryptTableViewController.m */,
+				9A0EE2CB1E9DCFA3009EFE08 /* RecipientsTableViewController.h */,
+				9A0EE2CC1E9DCFA3009EFE08 /* RecipientsTableViewController.m */,
+			);
+			name = "Encrypt MVC";
+			sourceTree = "<group>";
+		};
+		9A0EE2CA1E9DCF33009EFE08 /* Decrypt MVC */ = {
+			isa = PBXGroup;
+			children = (
+				9A6F82E11E9DDB5700CB563B /* DecryptTableViewController.h */,
+				9A6F82E21E9DDB5700CB563B /* DecryptTableViewController.m */,
+			);
+			name = "Decrypt MVC";
+			sourceTree = "<group>";
+		};
 		9A184D531E9258CB004E1211 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +121,7 @@
 				B5A63393081DA6F8EF7C72EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		9A184D5D1E9258CB004E1211 /* Products */ = {
 			isa = PBXGroup;
@@ -89,17 +136,9 @@
 			children = (
 				9A184D621E9258CB004E1211 /* AppDelegate.h */,
 				9A184D631E9258CB004E1211 /* AppDelegate.m */,
-				9A184D651E9258CB004E1211 /* EncryptViewController.h */,
-				9A184D661E9258CB004E1211 /* EncryptViewController.m */,
-				9A184D681E9258CB004E1211 /* DecryptViewController.h */,
-				9A184D691E9258CB004E1211 /* DecryptViewController.m */,
-				9AAC73521E992B66006577E2 /* KeysTableViewController.h */,
-				9AAC73531E992B66006577E2 /* KeysTableViewController.m */,
-				9AAC73551E992DFB006577E2 /* KeyTableViewCell.h */,
-				9AAC73561E992DFB006577E2 /* KeyTableViewCell.m */,
-				9A77EC3D1E993687002AB197 /* KeyInputTableViewController.h */,
-				9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */,
-				9A184D791E93C87D004E1211 /* UIApplicationAdditions.h */,
+				9A0EE2C91E9DCF2B009EFE08 /* Encrypt MVC */,
+				9A0EE2CA1E9DCF33009EFE08 /* Decrypt MVC */,
+				9A0EE2C81E9DCF24009EFE08 /* Keys MVC */,
 				9A184D6B1E9258CB004E1211 /* Main.storyboard */,
 				9A184D6E1E9258CB004E1211 /* Assets.xcassets */,
 				9A184D701E9258CB004E1211 /* LaunchScreen.storyboard */,
@@ -112,6 +151,7 @@
 		9A184D5F1E9258CB004E1211 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A184D791E93C87D004E1211 /* UIApplicationAdditions.h */,
 				9A184D601E9258CB004E1211 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -248,13 +288,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A184D6A1E9258CB004E1211 /* DecryptViewController.m in Sources */,
+				9A14B4D11EA17450006F1D03 /* NewKeyTableViewController.m in Sources */,
 				9AAC73571E992DFB006577E2 /* KeyTableViewCell.m in Sources */,
+				9A6F82E31E9DDB5700CB563B /* DecryptTableViewController.m in Sources */,
 				9A77EC3F1E993687002AB197 /* KeyInputTableViewController.m in Sources */,
+				9A3CC2E61E9D3E550023603B /* EncryptTableViewController.m in Sources */,
 				9A184D641E9258CB004E1211 /* AppDelegate.m in Sources */,
-				9A184D671E9258CB004E1211 /* EncryptViewController.m in Sources */,
+				9A14B4D41EA2444D006F1D03 /* KeyDetailsTableViewController.m in Sources */,
 				9AAC73541E992B66006577E2 /* KeysTableViewController.m in Sources */,
 				9A184D611E9258CB004E1211 /* main.m in Sources */,
+				9A0EE2CD1E9DCFA3009EFE08 /* RecipientsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +420,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QWKQYFE7NC;
 				INFOPLIST_FILE = iPGP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomalbrc.iPGP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomalbrc.iPGP0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -391,9 +434,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = QWKQYFE7NC;
 				INFOPLIST_FILE = iPGP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomalbrc.iPGP;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomalbrc.iPGP0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

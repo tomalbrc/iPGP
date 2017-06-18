@@ -7,6 +7,8 @@
 //
 
 #import "KeyInputTableViewController.h"
+#import "UIApplicationAdditions.h"
+#import "ObjectivePGP/ObjectivePGP.h"
 
 #define kPublicKeyBeginLine @"-----BEGIN PGP PUBLIC KEY BLOCK-----"
 #define kPublicKeyEndLine   @"-----END PGP PUBLIC KEY BLOCK-----"
@@ -14,6 +16,16 @@
 #define kSecretKeyEndLine   @"-----END PGP PRIVATE KEY BLOCK-----"
 
 @implementation KeyInputTableViewController
+
+- (IBAction)copyText:(id)sender {
+    [[UIPasteboard generalPasteboard] setString:textView.text];
+}
+- (IBAction)pasteText:(id)sender {
+    textView.text = [[UIPasteboard generalPasteboard] string];
+}
+- (IBAction)clearText:(id)sender {
+    textView.text = nil;
+}
 
 - (BOOL)isKey:(NSString *)text {
     return
@@ -23,42 +35,50 @@
 
 
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.delegate keyInputTableViewControllerDidCancel:self];
 }
 
 - (IBAction)saveKey:(id)sender {
-    NSLog(@"%@", textView.text);
-    
     if ([self isKey:textView.text]) {
-        NSMutableArray *keyArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"].mutableCopy;
-        [keyArray addObject:textView.text];
+        NSArray *keys = [[[UIApplication sharedApplication] objectivePGP] keysFromData:[textView.text dataUsingEncoding:NSASCIIStringEncoding]];
+        PGPKey *key = keys.firstObject;
         
-        [[NSUserDefaults standardUserDefaults] setObject:keyArray forKey:@"keys"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (_preferredType != PGPKeyUnknown && key.type != _preferredType) {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Warning" message:[NSString stringWithFormat:@"This is not a %@ key", _preferredType==PGPKeyPublic?@"public":@"secret"] preferredStyle:UIAlertControllerStyleAlert];
+            [ac addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            [self presentViewController:ac animated:YES completion:NULL];
+        }
         
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    } else {
-        NSLog(@"FUCK NO KEY");
+        [self.delegate keyInputTableViewController:self didFinishWithKey:key];
     }
 }
+
+#pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIToolbar *toolbar = [UIToolbar new];
+    toolbar.items = @[
+                      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                      [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:textView action:@selector(resignFirstResponder)],
+                      ];
+    [toolbar sizeToFit];
+    
+    textView.inputAccessoryView = toolbar;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [textView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
 
 @end
