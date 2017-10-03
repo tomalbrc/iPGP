@@ -44,7 +44,7 @@
         PGPKey *key = keys.firstObject;
         
         if (_preferredType != PGPKeyUnknown && key.type != _preferredType) {
-            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Warning" message:[NSString stringWithFormat:@"This is not a %@ key", _preferredType==PGPKeyPublic?@"public":@"secret"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Warning", @"Warning alert title") message:[NSString stringWithFormat:@"This is not a %@ key", NSLocalizedString([_preferredType==PGPKeyPublic?@"public":@"secret" capitalizedString], @"Not the right key message")] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
             }]];
@@ -74,6 +74,9 @@
     [super viewDidAppear:animated];
     
     [textView becomeFirstResponder];
+    
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {

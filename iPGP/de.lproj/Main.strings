@@ -1,0 +1,297 @@
+
+/* Class = "UILabel"; text = "Key Algorithm"; ObjectID = "1io-ko-Wm4"; */
+"1io-ko-Wm4.text" = "Schlüssel-Algorithmus";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "2DV-pB-lZG"; */
+"2DV-pB-lZG.text" = "0";
+
+/* Class = "UILabel"; text = "Encrypt"; ObjectID = "30o-oH-j6V"; */
+"30o-oH-j6V.text" = "Verschlüsseln";
+
+/* Class = "UILabel"; text = "Short Key ID"; ObjectID = "3jf-H8-aD8"; */
+"3jf-H8-aD8.text" = "Kurze Schlüssel ID";
+
+/* Class = "UILabel"; text = "Passphrase"; ObjectID = "40G-og-afF"; */
+"40G-og-afF.text" = "Passwort";
+
+/* Class = "UITableViewSection"; headerTitle = "User Information"; ObjectID = "6gN-iH-wxW"; */
+"6gN-iH-wxW.headerTitle" = "Benutzer ID";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "7D1-kq-JVQ"; */
+"7D1-kq-JVQ.text" = "Kommentar";
+
+/* Class = "UITableViewSection"; headerTitle = "Key"; ObjectID = "88V-5q-MwS"; */
+"88V-5q-MwS.headerTitle" = "Schlüssel";
+
+/* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "8bL-ud-0VX"; */
+"8bL-ud-0VX.normalTitle" = "Leeren";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "9NB-0q-5um"; */
+"9NB-0q-5um.normalTitle" = "Kopieren";
+
+/* Class = "UINavigationController"; title = "Add Key"; ObjectID = "B9C-zv-jca"; */
+"B9C-zv-jca.title" = "Schlüssel Hinzufügen";
+
+/* Class = "UILabel"; text = "Decrypt"; ObjectID = "BoS-sL-B7J"; */
+"BoS-sL-B7J.text" = "Entschlüsseln";
+
+/* Class = "UISegmentedControl"; CMm-0n-A7R.segmentTitles[0] = "RSA"; ObjectID = "CMm-0n-A7R"; */
+"CMm-0n-A7R.segmentTitles[0]" = "RSA";
+
+/* Class = "UISegmentedControl"; CMm-0n-A7R.segmentTitles[1] = "ECC"; ObjectID = "CMm-0n-A7R"; */
+"CMm-0n-A7R.segmentTitles[1]" = "ECC";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Cps-Ae-6nB"; */
+"Cps-Ae-6nB.text" = "Name";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "EGK-7K-pZb"; */
+"EGK-7K-pZb.text" = "Name";
+
+/* Class = "UITableViewSection"; headerTitle = "Metadata"; ObjectID = "EuP-ej-4Sa"; */
+"EuP-ej-4Sa.headerTitle" = "Metadaten";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HAA-Vt-ZUc"; */
+"HAA-Vt-ZUc.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HEN-Z1-a7m"; */
+"HEN-Z1-a7m.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Lu9-sT-bFw"; */
+"Lu9-sT-bFw.text" = "Label";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "PHa-RI-N9S"; */
+"PHa-RI-N9S.text" = "Email";
+
+/* Class = "UILabel"; text = "Created"; ObjectID = "Pp8-UW-K3G"; */
+"Pp8-UW-K3G.text" = "Erstellt am";
+
+/* Class = "UILabel"; text = "Key Size"; ObjectID = "Q23-IG-Vj3"; */
+"Q23-IG-Vj3.text" = "Schlüssel Größe";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QMJ-fc-EAh"; */
+"QMJ-fc-EAh.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "RBN-eN-27M"; */
+"RBN-eN-27M.normalTitle" = "Kopieren";
+
+/* Class = "UINavigationItem"; title = "Encrypt Message"; ObjectID = "SOF-bo-LO9"; */
+"SOF-bo-LO9.title" = "Nachricht Verschlüsseln";
+
+/* Class = "UILabel"; text = "Passphrase"; ObjectID = "Syg-08-T4w"; */
+"Syg-08-T4w.text" = "Passwort";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "TCN-07-y0d"; */
+"TCN-07-y0d.text" = "Kommentar";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Tw6-1A-Zsb"; */
+"Tw6-1A-Zsb.text" = "Benutzername";
+
+/* Class = "UISegmentedControl"; WYr-sI-Pw2.segmentTitles[0] = "1024"; ObjectID = "WYr-sI-Pw2"; */
+"WYr-sI-Pw2.segmentTitles[0]" = "1024";
+
+/* Class = "UISegmentedControl"; WYr-sI-Pw2.segmentTitles[1] = "2048"; ObjectID = "WYr-sI-Pw2"; */
+"WYr-sI-Pw2.segmentTitles[1]" = "2048";
+
+/* Class = "UISegmentedControl"; WYr-sI-Pw2.segmentTitles[2] = "4096"; ObjectID = "WYr-sI-Pw2"; */
+"WYr-sI-Pw2.segmentTitles[2]" = "4096";
+
+/* Class = "UINavigationItem"; title = "Key Details"; ObjectID = "XFm-gv-tcd"; */
+"XFm-gv-tcd.title" = "Schlüssel Details";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Xrm-jJ-hDP"; */
+"Xrm-jJ-hDP.text" = "0";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "Z5A-en-2P3"; */
+"Z5A-en-2P3.text" = "Kommentar";
+
+/* Class = "UILabel"; text = "email"; ObjectID = "ZUR-cr-FSc"; */
+"ZUR-cr-FSc.text" = "Email";
+
+/* Class = "UITableViewSection"; footerTitle = "ECC (Elliptic Curve Cryptography) is currently not available."; ObjectID = "bOd-E6-Kab"; */
+"bOd-E6-Kab.footerTitle" = "ECC (Elliptic Curve Cryptography) ist momentan nicht verfügbar.";
+
+/* Class = "UITableViewSection"; headerTitle = "Algorithm"; ObjectID = "bOd-E6-Kab"; */
+"bOd-E6-Kab.headerTitle" = "Algorithmus";
+
+/* Class = "UILabel"; text = "Long Key ID"; ObjectID = "d70-O7-w6q"; */
+"d70-O7-w6q.text" = "Lange Schlüssel ID";
+
+/* Class = "UINavigationItem"; title = "Decrypt Message"; ObjectID = "day-vE-ldu"; */
+"day-vE-ldu.title" = "Nachricht Entschlüsseln";
+
+/* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "dyK-Iq-2dC"; */
+"dyK-Iq-2dC.normalTitle" = "Leeren";
+
+/* Class = "UINavigationItem"; title = "Keys"; ObjectID = "eFg-qA-5LU"; */
+"eFg-qA-5LU.title" = "Schlüssel";
+
+/* Class = "UITabBarItem"; title = "Decrypt"; ObjectID = "hvO-Ql-Qj6"; */
+"hvO-Ql-Qj6.title" = "Entschlüsseln";
+
+/* Class = "UILabel"; text = "Select a recipient"; ObjectID = "izv-t4-frQ"; */
+"izv-t4-frQ.text" = "Empfänger auswählen...";
+
+/* Class = "UITabBarItem"; title = "Encrypt"; ObjectID = "j3n-to-uGI"; */
+"j3n-to-uGI.title" = "Verschlüsseln";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "jX4-hT-qQP"; */
+"jX4-hT-qQP.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Paste"; ObjectID = "lBf-qR-S8o"; */
+"lBf-qR-S8o.normalTitle" = "Einfügen";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "leQ-Wx-oOb"; */
+"leQ-Wx-oOb.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "••••••••••••"; ObjectID = "my7-4c-MXe"; */
+"my7-4c-MXe.placeholder" = "••••••••••••";
+
+/* Class = "UITableViewSection"; footerTitle = "NOTE: Generating large Keypairs may take some time."; ObjectID = "on1-VJ-UbS"; */
+"on1-VJ-UbS.footerTitle" = "ACHTUNG: Das generieren langer Schlüssel kann einige Zeit in anspruch nehmen.";
+
+/* Class = "UITableViewSection"; headerTitle = "Key Size in bits"; ObjectID = "on1-VJ-UbS"; */
+"on1-VJ-UbS.headerTitle" = "Schlüsselgröße in bits";
+
+/* Class = "UIButton"; normalTitle = "Copy"; ObjectID = "pSh-A9-chw"; */
+"pSh-A9-chw.normalTitle" = "Kopieren";
+
+/* Class = "UINavigationItem"; title = "Recipients"; ObjectID = "qNy-dr-5OL"; */
+"qNy-dr-5OL.title" = "Empfänger";
+
+/* Class = "UINavigationItem"; title = "Add Key"; ObjectID = "qrV-5V-aYp"; */
+"qrV-5V-aYp.title" = "Schlüssel Hinzufügen";
+
+/* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "sHP-Mf-hRk"; */
+"sHP-Mf-hRk.normalTitle" = "Leeren";
+
+/* Class = "UITableViewController"; title = "Keys"; ObjectID = "suL-zQ-FxB"; */
+"suL-zQ-FxB.title" = "Schlüssel";
+
+/* Class = "UITabBarItem"; title = "Keys"; ObjectID = "umZ-e9-4qm"; */
+"umZ-e9-4qm.title" = "Schlüssel";
+
+/* Class = "UIButton"; normalTitle = "Paste"; ObjectID = "uou-4D-WJs"; */
+"uou-4D-WJs.normalTitle" = "Einfügen";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "vIs-ij-DHX"; */
+"vIs-ij-DHX.text" = "Email";
+
+/* Class = "UILabel"; text = "Key Type"; ObjectID = "wJ1-g9-f4k"; */
+"wJ1-g9-f4k.text" = "Schlüssel Art";
+
+/* Class = "UIButton"; normalTitle = "Paste"; ObjectID = "x0u-fc-228"; */
+"x0u-fc-228.normalTitle" = "Einfügen";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yZV-iJ-csK"; */
+"yZV-iJ-csK.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "New Key"; ObjectID = "zIb-xz-DHq"; */
+"zIb-xz-DHq.title" = "Neuer Schlüssel";
+
+/* Class = "UINavigationItem"; title = "Sign"; ObjectID = "04B-pr-YHH"; */
+"04B-pr-YHH.title" = "Sign";
+
+/* Class = "UITableViewController"; title = "Encrypt"; ObjectID = "2rb-YJ-6a5"; */
+"2rb-YJ-6a5.title" = "Encrypt";
+
+/* Class = "UITableViewSection"; headerTitle = "Text"; ObjectID = "46g-02-acf"; */
+"46g-02-acf.headerTitle" = "Text";
+
+/* Class = "UITableViewSection"; headerTitle = "Encrypt Files"; ObjectID = "4b9-4D-08g"; */
+"4b9-4D-08g.headerTitle" = "Encrypt Files";
+
+/* Class = "UITableViewSection"; headerTitle = "Text"; ObjectID = "7il-DZ-THX"; */
+"7il-DZ-THX.headerTitle" = "Text";
+
+/* Class = "UILabel"; text = "Browse Documents"; ObjectID = "88g-Oc-LB2"; */
+"88g-Oc-LB2.text" = "Browse Documents";
+
+/* Class = "UILabel"; text = "Decrypt Plain Text"; ObjectID = "8iH-ah-fVi"; */
+"8iH-ah-fVi.text" = "Decrypt Plain Text";
+
+/* Class = "UITableViewController"; title = "Document Browser"; ObjectID = "A4v-gH-2rB"; */
+"A4v-gH-2rB.title" = "Document Browser";
+
+/* Class = "UITableViewSection"; headerTitle = "Text"; ObjectID = "Ahz-B3-t0Z"; */
+"Ahz-B3-t0Z.headerTitle" = "Text";
+
+/* Class = "UITableViewSection"; headerTitle = "Documents"; ObjectID = "DNb-NM-3cG"; */
+"DNb-NM-3cG.headerTitle" = "Dokumente";
+
+/* Class = "UITabBarItem"; title = "Sign"; ObjectID = "FiF-LZ-Sep"; */
+"FiF-LZ-Sep.title" = "Signieren";
+
+/* Class = "UINavigationItem"; title = "Documents"; ObjectID = "Hc6-tT-ug0"; */
+"Hc6-tT-ug0.title" = "Dokumente";
+
+/* Class = "UITableViewController"; title = "Sign"; ObjectID = "LMe-fQ-WNi"; */
+"LMe-fQ-WNi.title" = "Signieren";
+
+/* Class = "UILabel"; text = "email"; ObjectID = "MW1-pA-7yd"; */
+"MW1-pA-7yd.text" = "email";
+
+/* Class = "UILabel"; text = "Browse Documents"; ObjectID = "ND6-jW-VYg"; */
+"ND6-jW-VYg.text" = "Datei Öffnen";
+
+/* Class = "UILabel"; text = "Encrypt Plain Text"; ObjectID = "RmR-57-Z1Z"; */
+"RmR-57-Z1Z.text" = "Text Verschlüsseln";
+
+/* Class = "UILabel"; text = "Expires"; ObjectID = "VAK-NO-56d"; */
+"VAK-NO-56d.text" = "Verfällt am";
+
+/* Class = "UITableViewSection"; headerTitle = "User Information"; ObjectID = "Vhh-Ta-9Sd"; */
+"Vhh-Ta-9Sd.headerTitle" = "Benutzer Informationen";
+
+/* Class = "UITableViewSection"; headerTitle = "Documents"; ObjectID = "YmX-2N-vPE"; */
+"YmX-2N-vPE.headerTitle" = "Dokumente";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "a7v-sF-oaJ"; */
+"a7v-sF-oaJ.text" = "0";
+
+/* Class = "UITableViewController"; title = "Decrypt"; ObjectID = "aJd-bl-FT6"; */
+"aJd-bl-FT6.title" = "Entschlüsseln";
+
+/* Class = "UILabel"; text = "Browse File"; ObjectID = "cjS-60-fQQ"; */
+"cjS-60-fQQ.text" = "Datei Öffnen";
+
+/* Class = "UILabel"; text = "Browse File"; ObjectID = "cul-3Q-ADh"; */
+"cul-3Q-ADh.text" = "Datei Öffnen";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "eWU-Nk-QPa"; */
+"eWU-Nk-QPa.text" = "Benutzername";
+
+/* Class = "UILabel"; text = "Sign Plain Text"; ObjectID = "g8x-ea-Od1"; */
+"g8x-ea-Od1.text" = "Text Signieren";
+
+/* Class = "UILabel"; text = "Browse Documents"; ObjectID = "hRN-cu-6x3"; */
+"hRN-cu-6x3.text" = "Datei Öffnen";
+
+/* Class = "UILabel"; text = "File.txt"; ObjectID = "i4N-OR-ORm"; */
+"i4N-OR-ORm.text" = "File.txt";
+
+/* Class = "UINavigationItem"; title = "Encrypt"; ObjectID = "kRv-cU-CnF"; */
+"kRv-cU-CnF.title" = "Verschlüsseln";
+
+/* Class = "UILabel"; text = "Browse File"; ObjectID = "lr4-Zw-sfh"; */
+"lr4-Zw-sfh.text" = "Datei Öffnen";
+
+/* Class = "UITableViewSection"; headerTitle = "Documents"; ObjectID = "pwz-cM-uZi"; */
+"pwz-cM-uZi.headerTitle" = "Dokumente";
+
+/* Class = "UITableViewSection"; headerTitle = "Decrypt Files"; ObjectID = "qaE-3B-ON7"; */
+"qaE-3B-ON7.headerTitle" = "Dateien Entschlüsseln";
+
+/* Class = "UINavigationItem"; title = "Decrypt"; ObjectID = "v5q-GE-X57"; */
+"v5q-GE-X57.title" = "Entschlüsseln";
+
+/* Class = "UITableViewSection"; headerTitle = "Sign Files"; ObjectID = "vMR-u6-Jut"; */
+"vMR-u6-Jut.headerTitle" = "Dateien Signieren";
+
+/* Class = "UITableViewController"; title = "Encrypt"; ObjectID = "wF8-0W-SDy"; */
+"wF8-0W-SDy.title" = "Verschlüsseln";
+
+/* Class = "UITableViewController"; title = "Decrypt"; ObjectID = "wTn-em-q9i"; */
+"wTn-em-q9i.title" = "Echtschlüsseln";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "wX2-hR-IdY"; */
+"wX2-hR-IdY.text" = "Kommentar";

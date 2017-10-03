@@ -8,57 +8,44 @@
 
 #import "AppDelegate.h"
 #import "UIApplicationAdditions.h"
-#import "ObjectivePGP/ObjectivePGP.h"
+#import "Loader.h"
+#import "Types.h"
 
 @implementation AppDelegate
 
-- (NSArray *)loadKeysFromDefaults {
-    for (NSString *asciiKey in [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"]) {
-        [[[UIApplication sharedApplication] objectivePGP] importKeysFromData:[asciiKey dataUsingEncoding:NSASCIIStringEncoding] allowDuplicates:NO];
-        NSLog(@"Key: %ld", asciiKey.length);
-    }
-    
-    NSArray *keys = [[[UIApplication sharedApplication] objectivePGP] keys];
-    
-    NSLog(@"Keys: %@", keys);
-    for(PGPKey *k in keys) {
-        NSLog(@"%@", [k.keyID shortKey]);
-    }
-    
-    return keys;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIColor *colorBars = [UIColor whiteColor];
     
-    // This portion is for debugging
-    double internalVersion = 1.0;
-    if (![[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"] || [[NSUserDefaults standardUserDefaults] doubleForKey:@"version"] < internalVersion) {
-        [[NSUserDefaults standardUserDefaults] setDouble:internalVersion forKey:@"version"];
-        [[NSUserDefaults standardUserDefaults] setObject:@[] forKey:@"keys"];
-    }
-    // end
-    
-    
-    UIColor *colorBars = [UIColor colorWithWhite:0.96f alpha:1.f];
-    UIColor *colorButtons = [UIColor colorWithRed:0x62/255.f green:0x00/255.f blue:0xea
-                      /255.f alpha:1.f];
-    
-    //[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class], [UIToolbar class]]] setTintColor:[UIColor whiteColor]];
-
-    [self loadKeysFromDefaults];
-    
-    [[UITabBar appearance] setTintColor:colorButtons];
-    [[UINavigationBar appearance] setTintColor:colorButtons];
+    [[UITabBar appearance] setTintColor:kColorButtons];
+    [[UINavigationBar appearance] setTintColor:kColorButtons];
     
     [[UITabBar appearance] setBarTintColor:colorBars];
     [[UINavigationBar appearance] setBarTintColor:colorBars];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blackColor}];
-    [[UIBarButtonItem appearance] setTintColor:colorButtons];
+    [[UIBarButtonItem appearance] setTintColor:kColorButtons];
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:0.93f alpha:1.f]];
+    UITabBarController;
+    [[UIButton appearance] setTintColor:kColorButtons];
     
-    [[UIButton appearance] setTintColor:colorButtons];
+    [[UISegmentedControl appearance] setTintColor:kColorButtons];
     
+    [Loader loadKeys];
+    
+    // Create basic directories
+    NSString *docPath = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject.path;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[docPath stringByAppendingPathComponent:@"Imported"]]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:[docPath stringByAppendingPathComponent:@"Imported"] withIntermediateDirectories:YES attributes:nil error:NULL];
+        [[NSFileManager defaultManager] createDirectoryAtPath:[docPath stringByAppendingPathComponent:@"Encrypted"] withIntermediateDirectories:YES attributes:nil error:NULL];
+        [[NSFileManager defaultManager] createDirectoryAtPath:[docPath stringByAppendingPathComponent:@"Decrypted"] withIntermediateDirectories:YES attributes:nil error:NULL];
+        [[NSFileManager defaultManager] createDirectoryAtPath:[docPath stringByAppendingPathComponent:@"Signed"] withIntermediateDirectories:YES attributes:nil error:NULL];
+    }
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // TODO
     return YES;
 }
 
@@ -69,8 +56,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
 }
 
 

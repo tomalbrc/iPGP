@@ -10,6 +10,9 @@
 #import "ObjectivePGP/ObjectivePGP.h"
 #import "UIApplicationAdditions.h"
 
+#import "KeyTableViewCell.h"
+#import "NSStringAdditions.h"
+
 @interface RecipientsTableViewController ()
 
 @end
@@ -50,17 +53,36 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell;
     
-    if (indexPath.section == 1) {
-        cell.textLabel.text = [[publicKeys[indexPath.row] users].firstObject userID];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ascii" forIndexPath:indexPath];
         cell.textLabel.text = @"Enter ASCII Armored Public Key";
+        cell.textLabel.numberOfLines = 0;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        KeyTableViewCell *keyCell = (KeyTableViewCell *)cell;
+        
+        PGPUser *usr = [publicKeys[indexPath.row] users].firstObject;
+        
+        keyCell.usernameLabel.text = [usr userID].PGPName;
+        keyCell.emailLabel.text = [usr userID].PGPEmail;
+        keyCell.descriptionLabel.text = [usr userID].PGPComment;
+        keyCell.accessoryType = UITableViewCellAccessoryNone;
+        [keyCell setKeytype:PGPKeyPublic];
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) return 65.f;
+    else return 44.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

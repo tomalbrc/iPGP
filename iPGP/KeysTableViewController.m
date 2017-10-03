@@ -12,16 +12,34 @@
 #import "UIApplicationAdditions.h"
 #import "ObjectivePGP/ObjectivePGP.h"
 
+#import "NewKeyTableViewController.h"
+#import "Loader.h"
+#import "NSStringAdditions.h"
+
+/**
+ * TODO: Key data provider protocol for new and ascii armored keys
+ */
+
 @implementation KeysTableViewController
 
-- (IBAction)showOptions {
+- (IBAction)showOptions:(id)sender {
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"New Key" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL];
-    UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"Generate new Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"Generate Keypair" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // Show new key view controller
+        UINavigationController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewKeyTableViewControllerContainer"];
+        vc.modalPresentationStyle = UIModalPresentationPopover;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        vc.popoverPresentationController.barButtonItem = sender;
+        // TODO: Fix casting..?
+        [(NewKeyTableViewController *)[vc viewControllers].firstObject setDelegate:self];
+        [self presentViewController:vc animated:YES completion:^{
+            
+        }];
     }];
-    UIAlertAction *importAction = [UIAlertAction actionWithTitle:@"Import ASCII armored Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *importAction = [UIAlertAction actionWithTitle:@"Import ASCII Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UINavigationController *nc = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyInputTableViewControllerContainer"];
+        nc.popoverPresentationController.barButtonItem = sender;
         KeyInputTableViewController *kitvc = nc.viewControllers[0];
         kitvc.delegate = self;
         [self presentViewController:nc animated:YES completion:NULL];
@@ -29,6 +47,9 @@
     [ac addAction:cancelAction];
     [ac addAction:newAction];
     [ac addAction:importAction];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) [[ac popoverPresentationController] setBarButtonItem:sender];
+    
     [self presentViewController:ac animated:YES completion:NULL];
 }
 
@@ -37,7 +58,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    keys = [[[UIApplication sharedApplication] objectivePGP] keys].mutableCopy;
+    self.tableView.estimatedRowHeight = 65.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,18 +73,29 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
     
     NSData *newKeyData = [[[UIApplication sharedApplication] objectivePGP] exportKey:key armored:YES];
-    NSMutableArray *keyArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"keys"].mutableCopy;
-    [keyArray addObject:[[NSString alloc] initWithData:newKeyData encoding:NSASCIIStringEncoding]];
-    [[NSUserDefaults standardUserDefaults] setObject:keyArray forKey:@"keys"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [Loader addKeys:@[newKeyData]];
     
-    [keys addObject:key];
-    [[[UIApplication sharedApplication] objectivePGP] importKeysFromData:newKeyData allowDuplicates:NO];
-    
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:keys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:PGPKeys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)keyInputTableViewControllerDidCancel:(KeyInputTableViewController *)keyInputTableViewController {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - NewKeyTableViewController Delegate
+
+- (void)newKeyTableViewController:(NewKeyTableViewController *)viewController didFinishWithKeys:(NSArray<PGPKey *> *)pkeys {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    for (PGPKey *key in pkeys) {
+        NSData *newKeyData = [[[UIApplication sharedApplication] objectivePGP] exportKey:key armored:YES];
+        [Loader addKeys:@[newKeyData]];
+        
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:PGPKeys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (void)newKeyTableViewControllerDidCancel:(NewKeyTableViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -73,23 +106,43 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return keys.count;
+    return PGPKeys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KeyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    PGPKey *key = keys[indexPath.row];
-    cell.usernameLabel.text = [[[key users] firstObject] userID];
-    cell.descriptionLabel.text = [key type] == 0 ? @"Unknown key type" : key.type == 1 ? @"Secret Key" : @"Public Key";
+    PGPKey *key = PGPKeys[indexPath.row];
+    PGPUser *user = key.users.firstObject;
+    cell.usernameLabel.text = user.userID.PGPName;
+    cell.descriptionLabel.text = user.userID.PGPComment;
+    cell.emailLabel.text = user.userID.PGPEmail;
+    [cell setKeytype:[key type]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     KeyDetailsTableViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyDetailsTableViewController"];
-    c.key = keys[indexPath.row];
+    c.key = PGPKeys[indexPath.row];
     [self.navigationController pushViewController:c animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSData *data = [[[UIApplication sharedApplication] objectivePGP] exportKey:PGPKeys[indexPath.row] armored:YES];
+        [Loader removeKeys:@[data]];
+        
+        NSMutableArray *keys = PGPKeys.mutableCopy;
+        [keys removeObjectAtIndex:indexPath.row];
+        [[[UIApplication sharedApplication] objectivePGP] setKeys:keys];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 @end

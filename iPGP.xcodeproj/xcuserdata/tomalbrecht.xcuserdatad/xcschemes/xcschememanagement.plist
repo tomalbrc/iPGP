@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Decrypt Extension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>KeyboardExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>iPGP-macOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>iPGP.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +28,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>9A184D5B1E9258CB004E1211</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A49C1441F0650EE00B68303</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A5C5BAC1F08471400484C31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AB2BDA31EF7378F0003B2E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

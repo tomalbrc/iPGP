@@ -1,0 +1,57 @@
+
+/* No comment provided by engineer. */
+"BZ2_bzCompress failed" = "";
+
+/* No comment provided by engineer. */
+"BZ2_bzCompressInit failed" = "";
+
+/* No comment provided by engineer. */
+"BZ2_bzDecompress failed" = "";
+
+/* No comment provided by engineer. */
+"BZ2_bzDecompressInit failed" = "";
+
+/* Keypair generation wait title */
+"Generating Keypair" = "Generiere Schlüsselpaar";
+
+/* Keypair generation success message */
+"Generation of the Keypair finished successfully" = " Generieren des Schlüsselpaares wurde erfolgreich abgeschlossen";
+
+/* Keypair Generation Alert */
+"Keypair" = "Schlüsselpaar";
+
+/* Never Label */
+"Never" = "Nie";
+
+/* Title for 'Next Keyboard' button */
+"Next Keyboard" = "Nächste tastatur";
+
+/* No comment placeholder */
+"No comment" = "Kein Kommentar";
+
+/* No Email placeholder */
+"No Email" = "Keine Email";
+
+/* No name placeholder */
+"No name" = "Kein Name";
+
+/* Keypair generation wait message */
+"Please Wait..." = "Bitte warten...";
+
+/* Private/Public Label */
+"Private" = "Privat";
+
+/* Private/Public Label */
+"Public" = "Öffentlich";
+
+/* Not the right key message */
+"publicsecret" = "";
+
+/* Key Algorithm Type */
+"RSA (Encrypt only)" = "RSA (Nur Verschlüssseln)";
+
+/* Key Algorithm Type */
+"RSA (Sign only)" = "RSA (Nur Signieren)";
+
+/* Warning alert title */
+"Warning" = "Warnung";

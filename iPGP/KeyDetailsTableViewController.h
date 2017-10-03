@@ -16,6 +16,12 @@
     IBOutlet UILabel *keysizeLbl;
     IBOutlet UILabel *keytypeLbl;
     IBOutlet UILabel *algoLbl;
+    
+    IBOutlet UILabel *creationLbl;
+    IBOutlet UILabel *expiresLbl;
+    IBOutlet UILabel *shortKeyLbl;
+    IBOutlet UILabel *longKeyLbl;
+    
 }
 
 @property (weak, nonatomic) PGPKey *key;

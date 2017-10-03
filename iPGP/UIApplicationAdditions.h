@@ -11,12 +11,20 @@
 
 #import <ObjectivePGP/ObjectivePGP.h>
 
-@interface UIApplication (additions)
+#if TARGET_OS_OSX
+#define XApplication NSApplication
+#else
+#define XApplication UIApplication
+#endif
+
+#define PGPKeys [[[XApplication sharedApplication] objectivePGP] keys]
+
+@interface XApplication (additions)
 - (NSURL *)applicationDocumentsDirectory;
 - (ObjectivePGP *)objectivePGP;
 @end
 
-@implementation UIApplication (additions)
+@implementation XApplication (additions)
 - (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                    inDomains:NSUserDomainMask] lastObject];

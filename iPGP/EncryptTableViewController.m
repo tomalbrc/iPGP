@@ -100,10 +100,9 @@
 }
 
 #pragma mark - RecipientsTableViewController delegate
-
+@class PGPSubKey;
 - (void)recipientTableViewController:(RecipientsTableViewController *)recipientsTableViewController didSelectKey:(PGPKey *)key {
     publicKey = key;
-    
     recipientLbl.text = [key.users.firstObject userID];
 }
 

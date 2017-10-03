@@ -8,6 +8,7 @@
 
 #import "DecryptTableViewController.h"
 #import "UIApplicationAdditions.h"
+#import "Types.h"
 
 @implementation DecryptTableViewController
 
@@ -70,10 +71,17 @@
 
 #pragma mark - Table View Controller
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && indexPath.row == 1) {
+    if (indexPath.section == 2 && indexPath.row == 0) {
         [self decryptMessage];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
