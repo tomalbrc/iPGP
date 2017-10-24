@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 #import "Loader.h"
 #import "Types.h"
 
@@ -25,7 +25,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blackColor}];
     [[UIBarButtonItem appearance] setTintColor:kColorButtons];
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:0.93f alpha:1.f]];
-    UITabBarController;
+
     [[UIButton appearance] setTintColor:kColorButtons];
     
     [[UISegmentedControl appearance] setTintColor:kColorButtons];

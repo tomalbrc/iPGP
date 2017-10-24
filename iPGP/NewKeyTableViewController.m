@@ -10,7 +10,7 @@
 @import UserNotifications;
 
 #import "NewKeyTableViewController.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 
 #import "KeysTableViewController.h"
 
@@ -61,7 +61,7 @@
 /**
  * Generate new key. Returns NO if the key creation failed
  */
-- (IBAction)generateKey {
+- (IBAction)generateKey { // TODO: Cross platform key manager class
     _keys = [NSMutableDictionary dictionary];
     
     NSString *algo = algoSelection.selectedSegmentIndex == 0 ? @"rsa" : @"ecc";
@@ -108,7 +108,7 @@
     }];
 }
 
-#pragma mark - WK stuff
+#pragma mark - WebKit stuff
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"Message: %@ %@", message.name, message.body);

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet NSStackView *buttonBarStackView;
 @property (weak, nonatomic) IBOutlet NSView *containerView;
 
+- (void)setActive:(BOOL)active;
 
 @end

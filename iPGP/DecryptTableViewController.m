@@ -7,7 +7,7 @@
 //
 
 #import "DecryptTableViewController.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 #import "Types.h"
 
 @implementation DecryptTableViewController

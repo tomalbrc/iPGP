@@ -17,7 +17,7 @@
 		<key>iPGP-macOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>8</integer>
 		</dict>
 		<key>iPGP.xcscheme</key>
 		<dict>
@@ -43,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>9AB2BDA31EF7378F0003B2E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9ABA35E71F77CC630065B2A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

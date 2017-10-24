@@ -10,12 +10,16 @@
 #import "ObjectivePGP/PGPPublicKeyPacket.h"
 #import "ObjectivePGP/PGPSecretKeyPacket.h"
 #import "ObjectivePGP/PGPSignatureSubpacket.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 
-#import "NSStringAdditions.h"
+#import "NSString+Additions.h"
+#import "PGPKey+Additions.h"
+#import "NSDate+PGPAdditions.h"
 
 #define kHasComment ([[self.key users].firstObject userID].PGPComment && [[self.key users].firstObject userID].PGPComment.length)
 #define kHasEmail ([[self.key users].firstObject userID].PGPEmail && [[self.key users].firstObject userID].PGPEmail.length)
+
+static NSString *kDefaultDateFormat = @"dd.MM.yyyy HH:mm";
 
 @interface KeyDetailsTableViewController ()
 
@@ -23,40 +27,7 @@
 
 @implementation KeyDetailsTableViewController
 
-- (NSString *)stringForKeyType:(PGPPublicKeyAlgorithm)algo {
-    NSString *res = nil;
-    switch (algo) {
-        case PGPPublicKeyAlgorithmRSA:
-            res = @"RSA"; break;
-        case PGPPublicKeyAlgorithmRSASignOnly:
-            res = NSLocalizedString(@"RSA (Sign only)", @"Key Algorithm Type"); break;
-        case PGPPublicKeyAlgorithmRSAEncryptOnly:
-            res = NSLocalizedString(@"RSA (Encrypt only)", @"Key Algorithm Type"); break;
-        case PGPPublicKeyAlgorithmElgamal:
-            res = @"Elgamal"; break;
-        case PGPPublicKeyAlgorithmDSA:
-            res = @"DSA"; break;
-        case PGPPublicKeyAlgorithmElliptic:
-            res = @"Elliptic";
-        case PGPPublicKeyAlgorithmECDSA:
-            res = @"ECDSA";
-        default: break;
-    }
-    return res;
-}
 
-- (long)expirationTimeOfKey {
-    __block long expirationTime = 0;
-    PGPUser *usr = [self.key users].firstObject;
-    PGPSignaturePacket *sig = [usr selfCertifications].firstObject;
-    [sig.hashedSubpackets enumerateObjectsUsingBlock:^(PGPSignatureSubpacket *sub, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (sub.type == PGPSignatureSubpacketTypeKeyExpirationTime) {
-            expirationTime = [sub.value intValue];
-            *stop = YES;
-        }
-    }];
-    return expirationTime;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,7 +35,7 @@
     
     PGPUser *usr = [self.key users].firstObject;
     PGPPublicKeyPacket *packet = (PGPPublicKeyPacket *)[self.key primaryKeyPacket];
-    algoLbl.text = [self stringForKeyType:packet.publicKeyAlgorithm];
+    algoLbl.text = [NSString stringForKeyType:packet.publicKeyAlgorithm];
     keysizeLbl.text = [NSString stringWithFormat:@"%ld bit", (unsigned long)packet.keySize*8];
     
     if ([[self.key primaryKeyPacket] class] == [PGPPublicKeyPacket class]) {
@@ -102,10 +73,10 @@
     }
     
     
-    long expirationTime = [self expirationTimeOfKey];
+    long expirationTime = [self.key expirationTime];
     
-    creationLbl.text = [self stringForDate:[(PGPPublicKeyPacket*)[self.key primaryKeyPacket] createDate]];
-    expiresLbl.text = expirationTime == 0 ? NSLocalizedString(@"Never", @"Never Label") : [self stringForDate:[[(PGPPublicKeyPacket*)[self.key primaryKeyPacket] createDate] dateByAddingTimeInterval:expirationTime]];
+    creationLbl.text = [[packet createDate] stringWithFormat:kDefaultDateFormat];
+    expiresLbl.text = expirationTime == 0 ? NSLocalizedString(@"Never", @"Never Label") : [[[packet createDate] dateByAddingTimeInterval:expirationTime] stringWithFormat:kDefaultDateFormat];
     expiresLbl.enabled = expirationTime > 0;
     
     shortKeyLbl.text = [[self.key keyID] shortKeyString];
@@ -119,13 +90,6 @@
     avc.excludedActivityTypes = @[];
     if (UIUserInterfaceIdiomPad == UI_USER_INTERFACE_IDIOM()) [[avc popoverPresentationController] setBarButtonItem:sender];
     [self presentViewController:avc animated:YES completion:NULL];
-}
-
-- (NSString *)stringForDate:(NSDate *)date {
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd.MM.yyyy HH:mm"];
-    NSString *dateString = [dateFormat stringFromDate:date];
-    return dateString;
 }
 
 

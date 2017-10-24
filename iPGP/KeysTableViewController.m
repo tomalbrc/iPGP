@@ -9,12 +9,12 @@
 #import "KeysTableViewController.h"
 #import "KeyDetailsTableViewController.h"
 #import "KeyTableViewCell.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 #import "ObjectivePGP/ObjectivePGP.h"
 
 #import "NewKeyTableViewController.h"
 #import "Loader.h"
-#import "NSStringAdditions.h"
+#import "NSString+Additions.h"
 
 /**
  * TODO: Key data provider protocol for new and ascii armored keys

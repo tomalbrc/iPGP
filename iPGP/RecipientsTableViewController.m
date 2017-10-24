@@ -8,10 +8,10 @@
 
 #import "RecipientsTableViewController.h"
 #import "ObjectivePGP/ObjectivePGP.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 
 #import "KeyTableViewCell.h"
-#import "NSStringAdditions.h"
+#import "NSString+Additions.h"
 
 @interface RecipientsTableViewController ()
 

@@ -7,7 +7,7 @@
 //
 
 #import "KeyInputTableViewController.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 #import "ObjectivePGP/ObjectivePGP.h"
 
 #define kPublicKeyBeginLine @"-----BEGIN PGP PUBLIC KEY BLOCK-----"

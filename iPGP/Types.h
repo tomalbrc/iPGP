@@ -10,12 +10,12 @@
 #define Types_h
 
 #if TARGET_OS_OSX
-#define TAColor NSColor
+#define XColor NSColor
 #else
-#define TAColor UIColor
+#define XColor UIColor
 #endif
 
-#define kColorButtons [TAColor colorWithRed:0x62/255.f green:0x00/255.f blue:0xea/255.f alpha:1.f]
+#define kColorButtons [XColor colorWithRed:0x62/255.f green:0x00/255.f blue:0xea/255.f alpha:1.f]
 
 
 #endif /* Types_h */

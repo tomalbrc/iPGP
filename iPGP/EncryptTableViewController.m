@@ -7,7 +7,7 @@
 //
 
 #import "EncryptTableViewController.h"
-#import "UIApplicationAdditions.h"
+#import "XApplication+Additions.h"
 
 #define kPublicKeyBeginLine @"-----BEGIN PGP PUBLIC KEY BLOCK-----"
 #define kPublicKeyEndLine @"-----END PGP PUBLIC KEY BLOCK-----"

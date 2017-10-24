@@ -7,7 +7,7 @@
 //
 
 #import "TATabBarController.h"
-#import "ViewController.h"
+#import "KeysTableViewController.h"
 
 @interface TATabBarController () {
     NSTabViewController *tabViewController;
@@ -26,13 +26,16 @@
     [super viewDidLoad];
     // Do view setup here.
     
+    
     buttons = self.buttonBarStackView.arrangedSubviews;
     for (int i = 0; i < buttons.count; i++) {
         NSButton *b = buttons[i];
         b.tag = i;
+        [b setState:NSControlStateValueOff];
         [b setTarget:self];
         [b setAction:@selector(pushedButton:)];
     }
+    
     [self pushedButton:buttons.firstObject];
 }
 
@@ -45,5 +48,10 @@
     oldSelectedButtonIndex = sender.tag;
 }
 
+- (void)setActive:(BOOL)active {
+    if (active) {
+        
+    }
+}
 
 @end
