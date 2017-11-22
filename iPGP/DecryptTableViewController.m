@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 12.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "DecryptTableViewController.h"
@@ -30,7 +30,7 @@
     NSError *error = nil;
     NSData *decryptedData = nil;
     @try {
-        decryptedData = [pgp decryptData:data passphrase:passphraseTF.text error:&error];
+        decryptedData = [pgp decrypt:data passphrase:passphraseTF.text error:&error];
     } @catch (NSException *exception) {
         NSLog(@"Exception: %@", exception);
         // Need to get back to main queue

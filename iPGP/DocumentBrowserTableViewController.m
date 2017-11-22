@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 19.07.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "DocumentBrowserTableViewController.h"
@@ -90,7 +90,7 @@
             NSString *ext = [filename pathExtension];
             if ([ext isEqualToString:@"signed"]) {
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Verify Signature" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [Loader addKeys:@[[NSData data]]];
+
                 }];
                 [controller addAction:cancelAction];
             }

@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 28.09.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -12,7 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet NSStackView *buttonBarStackView;
 @property (weak, nonatomic) IBOutlet NSView *containerView;
-
-- (void)setActive:(BOOL)active;
 
 @end

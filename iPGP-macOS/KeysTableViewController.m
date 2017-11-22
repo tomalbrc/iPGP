@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 24.09.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "KeysTableViewController.h"
@@ -13,7 +13,7 @@
 #import "NSImage+Additions.h"
 #import "NSColor+Additions.h"
 
-#import "PGPKey+Additions.h"
+#import "PGPPartialKey+Additions.h"
 #import "NSDate+PGPAdditions.h"
 
 #import "AppDelegate.h"
@@ -41,6 +41,7 @@ static const NSString* TextCell = @"TextCell";
     
     [Loader loadKeys];
 
+    [_tableView becomeFirstResponder];
     // Do any additional setup after loading the view.
 }
 
@@ -59,17 +60,8 @@ static const NSString* TextCell = @"TextCell";
 #pragma mark - Key Import Extras
 
 - (void)importKeys:(NSArray<PGPKey *> *)keys {
-    NSIndexSet *is = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(PGPKeys.count-keys.count, keys.count)];
-    
-    NSMutableArray<NSData *> *keyDataArray = [NSMutableArray array];
-    for (PGPKey *key in keys) {
-        NSData *keyData = [NSApplication.sharedApplication.objectivePGP exportKey:key armored:NO];
-        [keyDataArray addObject:keyData];
-    }
-    [Loader addKeys:keyDataArray];
-    
-    
-    [_tableView insertRowsAtIndexes:is withAnimation:NSTableViewAnimationSlideUp];
+    [XApplication.sharedApplication.objectivePGP importKeys:keys];
+    [Loader save];
     
     [_tableView reloadData];
 }
@@ -87,28 +79,29 @@ static const NSString* TextCell = @"TextCell";
     NSTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
     
     PGPKey *key = PGPKeys[row];
-    PGPPublicKeyPacket *packet = (PGPPublicKeyPacket *)key.primaryKeyPacket;
-
+    PGPPartialKey *partialKey = key.isPublic ? key.publicKey : key.secretKey;
+    PGPPublicKeyPacket *packet = (PGPPublicKeyPacket *)partialKey.primaryKeyPacket;
+    
     if (columnIndex == 0) {
         for (NSView *sub in cellView.subviews) {
             NSColor *imageTint = [NSColor purpleUrple];
 
             if ([sub isKindOfClass:[NSImageView class]]) {
                 NSImageView *imageView = (NSImageView *)sub;
-                imageView.image = [[NSImage imageNamed:key.type == PGPKeyPublic ? @"globe" : @"lock_closed"] tintedImageWithColor:imageTint];
+                imageView.image = [[NSImage imageNamed:!key.isSecret ? @"globe" : @"lock_closed"] tintedImageWithColor:imageTint];
             } else if ([sub isKindOfClass:[NSTextField class]]) {
                 NSTextField *tf = (NSTextField *)sub;
                 tf.textColor = imageTint;
-                tf.stringValue = key.type == PGPKeySecret ? @"Secret" : @"Public";
+                tf.stringValue = key.isSecret && key.isPublic ? @"Secret & Public" : key.isSecret ? @"Secret" : @"Public";
             }
         }
     } else {
         NSTextField *tf = cellView.subviews.firstObject;
         tf.stringValue = @"";
-
+        
         switch (columnIndex) {
             case 1: {
-                NSString *username = [key.users.firstObject userID].PGPName;
+                NSString *username = [partialKey.users.firstObject userID].PGPName;
                 tf.stringValue = username;
                 break;
             }
@@ -127,7 +120,7 @@ static const NSString* TextCell = @"TextCell";
                 break;
             }
             case 5: {
-                long expirationTime = [key expirationTime];
+                long expirationTime = [partialKey expirationTime];
                 
                 NSDate *date = [[packet createDate] dateByAddingTimeInterval:expirationTime];
                 tf.stringValue = expirationTime == 0 ? @"Never" : [date stringWithFormat:kDefaultDateFormat];

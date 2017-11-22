@@ -3,14 +3,14 @@
 //  iPGPTests
 //
 //  Created by Tom Albrecht on 19.06.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "NewKeyTableViewController.h"
+#import "GenerateKeyTableViewController.h"
 
 @interface iPGPTests : XCTestCase {
-    NewKeyTableViewController *vc;
+    GenerateKeyTableViewController *vc;
 }
 
 @end
@@ -21,7 +21,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
-    vc = [NewKeyTableViewController new];
+    vc = [GenerateKeyTableViewController new];
     [vc loadView];
     [vc viewDidLoad];
     [vc viewWillAppear:NO];

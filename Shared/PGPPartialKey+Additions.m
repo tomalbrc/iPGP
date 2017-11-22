@@ -1,16 +1,16 @@
 //
-//  PGPKey+Additions.m
+//  PGPPartialKey+Additions.m
 //  iPGP
 //
 //  Created by Tom Albrecht on 19.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
-#import "PGPKey+Additions.h"
+#import "PGPPartialKey+Additions.h"
 #import <ObjectivePGP/ObjectivePGP.h>
-#import <ObjectivePGP/PGPSignatureSubpacket.h>
+#import <ObjectivePGP/PGPSignaturePacket.h>
 
-@implementation PGPKey (Additions)
+@implementation PGPPartialKey (Additions)
 - (long)expirationTime {
     __block long expirationTime = 0;
     PGPUser *usr = [self users].firstObject;

@@ -9,12 +9,12 @@
 @import WebKit;
 @import UserNotifications;
 
-#import "NewKeyTableViewController.h"
+#import "GenerateKeyTableViewController.h"
 #import "XApplication+Additions.h"
 
 #import "KeysTableViewController.h"
 
-@interface NewKeyTableViewController() {
+@interface GenerateKeyTableViewController() {
     WKWebView *webView;
     
     IBOutlet UISegmentedControl *bitSelection;
@@ -30,7 +30,7 @@
 }
 @end
 
-@implementation NewKeyTableViewController
+@implementation GenerateKeyTableViewController
 
 - (IBAction)changeAlgorithm:(id)sender {
     UISegmentedControl *control = bitSelection;
@@ -70,13 +70,6 @@
     int keySize = 384;
     if (algoSelection.selectedSegmentIndex == 0) keySize = selectedIndex == 0 ? 1024 : selectedIndex == 1 ? 2048 : selectedIndex == 2 ? 4096 : 8192;
     
-    
-    NSString *jquery = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"jquery-1.11.2.min" ofType:@"js"] encoding:NSUTF8StringEncoding error:NULL];
-    NSString *kbpgp = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"kbpgp-1.0.0-min" ofType:@"js"] encoding:NSUTF8StringEncoding error:NULL];
-    NSString *keygen = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"pgpkeygen" ofType:@"js"] encoding:NSUTF8StringEncoding error:NULL];
-    keygen = [keygen stringByAppendingString:[NSString stringWithFormat:@
-                                              "genKeyPair(\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", %d);", nameTF.text, emailTF.text, commentTF.text, passwordTF.text, algo, keySize]];
-    
     [self.view endEditing:YES];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Generating Keypair", @"Keypair generation wait title")
@@ -92,19 +85,24 @@
     
     [self presentViewController:alert animated:YES completion:^{
         
-        WKUserScript *script = [[WKUserScript alloc] initWithSource:[[jquery stringByAppendingString:kbpgp] stringByAppendingString:keygen] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-        
-        userContentController = [[WKUserContentController alloc] init];
-        [userContentController addUserScript:script];
-        [userContentController addScriptMessageHandler:self name:@"skey"];
-        [userContentController addScriptMessageHandler:self name:@"pkey"];
-        
-        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-        configuration.userContentController = userContentController;
-        
-        webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
-        [webView loadHTMLString:@"<html>" baseURL:nil];
-        [self.view addSubview:webView];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            PGPKeyGenerator *generator = [[PGPKeyGenerator alloc] init];
+            generator.keyAlgorithm = PGPPublicKeyAlgorithmRSA;
+            generator.keyBitsLength = keySize;
+            PGPKey *key = [generator generateFor:[NSString stringWithFormat:@"%@ <%@>%@", nameTF.text, emailTF.text, commentTF.text.length > 0 ?  [NSString stringWithFormat:@" (%@)", commentTF.text]:@""] passphrase:passwordTF.text.length > 0 ? passwordTF.text : nil];
+            NSData *publicKeyData = [key export:PGPPartialKeyPublic error:nil];
+            NSData *secretKeyData = [key export:PGPPartialKeySecret error:nil];
+            
+            NSArray *keys = [[ObjectivePGP readKeysFromData:publicKeyData] arrayByAddingObjectsFromArray:[ObjectivePGP readKeysFromData:secretKeyData]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [(UIAlertController *)self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+                    if (self.delegate)
+                        [self.delegate newKeyTableViewController:self didFinishWithKeys:keys];
+                }];
+                
+            });
+        });
     }];
 }
 
@@ -112,13 +110,11 @@
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"Message: %@ %@", message.name, message.body);
-    _keys[message.name] = [[[UIApplication sharedApplication] objectivePGP] keysFromData:[message.body dataUsingEncoding:NSUTF8StringEncoding]].firstObject;
+    if (message.body != [NSNull null]) _keys[message.name] = [[[UIApplication sharedApplication] objectivePGP] keysFromData:[message.body dataUsingEncoding:NSUTF8StringEncoding]].firstObject;
     
     if (_keys.allValues.count >= 2 && _keys[@"skey"] && _keys[@"pkey"]) {
         if ([self.presentedViewController isKindOfClass:[UIAlertController class]]) {
-            [(UIAlertController *)self.presentedViewController dismissViewControllerAnimated:YES completion:^{
-                [self.delegate newKeyTableViewController:self didFinishWithKeys:_keys.allValues];
-            }];
+            
         }
         
         [webView removeFromSuperview];

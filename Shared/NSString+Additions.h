@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 21.06.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,17 +14,19 @@
 
 @interface NSString (PGPAdditions)
 
+- (nonnull NSString *)originatedString;
+
 - (BOOL)isValidKey;
 - (BOOL)isValidPublicKey;
 - (BOOL)isValidPrivateKey;
 - (BOOL)isValidMessage;
 - (BOOL)isValidSignature;
 
-- (NSString *)PGPName;
-- (NSString *)PGPEmail;
-- (NSString *)PGPComment;
+- (nullable NSString *)PGPName;
+- (nullable NSString *)PGPEmail;
+- (nullable NSString *)PGPComment;
 
-+ (NSString *)stringForKeyType:(PGPPublicKeyAlgorithm)algo;
++ (nonnull NSString *)stringForKeyType:(PGPPublicKeyAlgorithm)algo;
 @end
 
 #endif /* NSStringAdditions_h */

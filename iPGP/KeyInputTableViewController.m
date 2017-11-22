@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 08.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "KeyInputTableViewController.h"
@@ -40,11 +40,11 @@
 
 - (IBAction)saveKey:(id)sender {
     if ([self isKey:textView.text]) {
-        NSArray *keys = [[[UIApplication sharedApplication] objectivePGP] keysFromData:[textView.text dataUsingEncoding:NSASCIIStringEncoding]];
+        NSArray *keys = [ObjectivePGP readKeysFromData:[textView.text dataUsingEncoding:NSASCIIStringEncoding]];
         PGPKey *key = keys.firstObject;
         
-        if (_preferredType != PGPKeyUnknown && key.type != _preferredType) {
-            UIAlertController *ac = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Warning", @"Warning alert title") message:[NSString stringWithFormat:@"This is not a %@ key", NSLocalizedString([_preferredType==PGPKeyPublic?@"public":@"secret" capitalizedString], @"Not the right key message")] preferredStyle:UIAlertControllerStyleAlert];
+        if (_prefersPublic != key.isPublic) {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Warning", @"Warning alert title") message:[NSString stringWithFormat:@"This is not a %@ key", NSLocalizedString([_prefersPublic?@"public":@"secret" capitalizedString], @"Not the right key message")] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
             }]];

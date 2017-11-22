@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 04.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #ifndef UIApplicationAdditions_h

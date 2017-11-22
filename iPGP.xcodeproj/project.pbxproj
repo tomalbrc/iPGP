@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F59F7BEB43801C0F4292E26 /* libPods-iPGPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDD12A6832842B5497B7E97 /* libPods-iPGPTests.a */; };
+		5237B1B70E78732D184CACA0 /* libPods-iPGP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFC786500418E2B23B766BB /* libPods-iPGP.a */; };
+		984145B758E688B7F1036F47 /* libPods-iPGP-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5221AC3034D392EF63E52CDD /* libPods-iPGP-macOS.a */; };
 		9A0EE2CD1E9DCFA3009EFE08 /* RecipientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EE2CC1E9DCFA3009EFE08 /* RecipientsTableViewController.m */; };
 		9A14282C1F9FC672005D181A /* UserInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB158A1F8958D500F5175E /* UserInputViewController.m */; };
-		9A14B4D11EA17450006F1D03 /* NewKeyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */; };
+		9A14B4D11EA17450006F1D03 /* GenerateKeyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B4D01EA17450006F1D03 /* GenerateKeyTableViewController.m */; };
 		9A14B4D41EA2444D006F1D03 /* KeyDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */; };
 		9A184D611E9258CB004E1211 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D601E9258CB004E1211 /* main.m */; };
 		9A184D641E9258CB004E1211 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A184D631E9258CB004E1211 /* AppDelegate.m */; };
@@ -20,6 +21,8 @@
 		9A19F7471F77FCC600981AF7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A19F7451F77FC9F00981AF7 /* Media.xcassets */; };
 		9A1ADEA21F87E22C00A1FED2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CD22D1F87A7EB005AD353 /* main.m */; };
 		9A1ADEA31F87E22F00A1FED2 /* NSImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CD22E1F87A7EB005AD353 /* NSImage+Additions.m */; };
+		9A2A4CF31FC6330300AFD189 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2A4CF21FC6330300AFD189 /* UIKit.framework */; };
+		9A2A4CF51FC6331700AFD189 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2A4CF41FC6331700AFD189 /* UserNotifications.framework */; };
 		9A2B21FA1F98C66F00934FC2 /* NSDate+PGPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2B21F91F98C66F00934FC2 /* NSDate+PGPAdditions.m */; };
 		9A2B21FB1F98C66F00934FC2 /* NSDate+PGPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2B21F91F98C66F00934FC2 /* NSDate+PGPAdditions.m */; };
 		9A3CC2E61E9D3E550023603B /* EncryptTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3CC2E51E9D3E550023603B /* EncryptTableViewController.m */; };
@@ -30,9 +33,6 @@
 		9A44F21D1F88F26600629D39 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44F21C1F88F26600629D39 /* SignatureViewController.m */; };
 		9A6F82E31E9DDB5700CB563B /* DecryptTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F82E21E9DDB5700CB563B /* DecryptTableViewController.m */; };
 		9A77EC3F1E993687002AB197 /* KeyInputTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */; };
-		9A8074D71F023FB200A75C4A /* kbpgp-1.0.0-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D51F023FB200A75C4A /* kbpgp-1.0.0-min.js */; };
-		9A8074D81F023FB200A75C4A /* pgpkeygen.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D61F023FB200A75C4A /* pgpkeygen.js */; };
-		9A8074DA1F02439400A75C4A /* jquery-1.11.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D91F02433900A75C4A /* jquery-1.11.2.min.js */; };
 		9A8374001F85A516002CFCC6 /* TATabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8373FF1F85A516002CFCC6 /* TATabBarItem.m */; };
 		9A87F8B11F88398300556B8A /* EncryptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87F8B01F88398300556B8A /* EncryptViewController.m */; };
 		9AA7E7111F7D10250022419C /* TATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7E7101F7D10250022419C /* TATabBarController.m */; };
@@ -43,24 +43,21 @@
 		9ABA35EF1F77CC630065B2A9 /* KeysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA35EE1F77CC630065B2A9 /* KeysTableViewController.m */; };
 		9ABA35F41F77CC630065B2A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA35F21F77CC630065B2A9 /* Main.storyboard */; };
 		9ACA61591F98BD1F00A6424A /* Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44327F1F03FAF500DF40F1 /* Loader.m */; };
-		9ACA615C1F98C10C00A6424A /* PGPKey+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615B1F98C10C00A6424A /* PGPKey+Additions.m */; };
-		9ACA615D1F98C10C00A6424A /* PGPKey+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615B1F98C10C00A6424A /* PGPKey+Additions.m */; };
+		9ACA615C1F98C10C00A6424A /* PGPPartialKey+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615B1F98C10C00A6424A /* PGPPartialKey+Additions.m */; };
+		9ACA615D1F98C10C00A6424A /* PGPPartialKey+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615B1F98C10C00A6424A /* PGPPartialKey+Additions.m */; };
 		9ACA615F1F98C17300A6424A /* XApplication+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615E1F98C17300A6424A /* XApplication+Additions.m */; };
 		9ACA61601F98C17300A6424A /* XApplication+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA615E1F98C17300A6424A /* XApplication+Additions.m */; };
 		9ACA61621F98C1CC00A6424A /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA61611F98C1CC00A6424A /* NSString+Additions.m */; };
 		9ACA61631F98C1CC00A6424A /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA61611F98C1CC00A6424A /* NSString+Additions.m */; };
 		9AD0CE3A1F8EA1B50009534C /* TextKeyImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB15881F8958D400F5175E /* TextKeyImportViewController.m */; };
-		9AD0CE3B1F8EA1F50009534C /* jquery-1.11.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D91F02433900A75C4A /* jquery-1.11.2.min.js */; };
-		9AD0CE3C1F8EA1F50009534C /* kbpgp-1.0.0-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D51F023FB200A75C4A /* kbpgp-1.0.0-min.js */; };
-		9AD0CE3D1F8EA1F50009534C /* pgpkeygen.js in Resources */ = {isa = PBXBuildFile; fileRef = 9A8074D61F023FB200A75C4A /* pgpkeygen.js */; };
 		9ADBB7C21F1FE37D00E1EFCE /* DocumentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBB7C11F1FE37D00E1EFCE /* DocumentManager.m */; };
 		9ADBB7C61F1FE97E00E1EFCE /* SignTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBB7C51F1FE97E00E1EFCE /* SignTableViewController.m */; };
 		9AE242701F1F8135003D992A /* DocumentBrowserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2426F1F1F8135003D992A /* DocumentBrowserTableViewController.m */; };
+		9AE885221FA0924E0009EDC8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE885211FA0924E0009EDC8 /* AppKit.framework */; };
 		9AFB15841F89570500F5175E /* TAImageLabelTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB15831F89570500F5175E /* TAImageLabelTableCellView.m */; };
 		9AFB15871F89585100F5175E /* NSColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB15861F89585100F5175E /* NSColor+Additions.m */; };
 		9AFB158E1F8974DE00F5175E /* TADropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB158D1F8974DE00F5175E /* TADropView.m */; };
-		AEC02888531256021E713778 /* libPods-iPGP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA973E6685F71823F058BC2 /* libPods-iPGP.a */; };
-		E554A829EC0564775AFD697F /* libPods-iPGP-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3927C6F4A35E5525BA0BCD63 /* libPods-iPGP-macOS.a */; };
+		BEFEE370932132DC5AE46239 /* libPods-iPGPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E30BBAEEA06F8BAC2C2990 /* libPods-iPGPTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,17 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2FDD12A6832842B5497B7E97 /* libPods-iPGPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		34A6113F5D2E4613656D0A86 /* libPods-KeyboardExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KeyboardExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3927C6F4A35E5525BA0BCD63 /* libPods-iPGP-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGP-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55FA3106AE622824C0D34DAB /* Pods-iPGP-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS.release.xcconfig"; sourceTree = "<group>"; };
-		5DFD239731F9C0A67D50B842 /* Pods-iPGP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.release.xcconfig"; sourceTree = "<group>"; };
-		6443E8439F87001D2E831617 /* Pods-KeyboardExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardExtension/Pods-KeyboardExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		647891B824B0788FF6E17E51 /* Pods-iPGP-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		141DB39F4FE848B97FFFAA45 /* Pods-iPGP-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1B3FF2F4CD3DF8BBBD6F5464 /* Pods-iPGP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.debug.xcconfig"; sourceTree = "<group>"; };
+		3BFC786500418E2B23B766BB /* libPods-iPGP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5221AC3034D392EF63E52CDD /* libPods-iPGP-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGP-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0EE2CB1E9DCFA3009EFE08 /* RecipientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientsTableViewController.h; sourceTree = "<group>"; };
 		9A0EE2CC1E9DCFA3009EFE08 /* RecipientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientsTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		9A14B4CF1EA17450006F1D03 /* NewKeyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewKeyTableViewController.h; sourceTree = "<group>"; };
-		9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewKeyTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		9A14B4CF1EA17450006F1D03 /* GenerateKeyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateKeyTableViewController.h; sourceTree = "<group>"; };
+		9A14B4D01EA17450006F1D03 /* GenerateKeyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateKeyTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		9A14B4D21EA2444C006F1D03 /* KeyDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyDetailsTableViewController.h; sourceTree = "<group>"; };
 		9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyDetailsTableViewController.m; sourceTree = "<group>"; };
 		9A184D5C1E9258CB004E1211 /* iPGP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPGP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +90,8 @@
 		9A184D731E9258CB004E1211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A184D791E93C87D004E1211 /* XApplication+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XApplication+Additions.h"; sourceTree = "<group>"; };
 		9A19F7451F77FC9F00981AF7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		9A2A4CF21FC6330300AFD189 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9A2A4CF41FC6331700AFD189 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		9A2B21F81F98C66F00934FC2 /* NSDate+PGPAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+PGPAdditions.h"; sourceTree = "<group>"; };
 		9A2B21F91F98C66F00934FC2 /* NSDate+PGPAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PGPAdditions.m"; sourceTree = "<group>"; };
 		9A3CC2E41E9D3E550023603B /* EncryptTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptTableViewController.h; sourceTree = "<group>"; };
@@ -119,9 +115,6 @@
 		9A6F82E21E9DDB5700CB563B /* DecryptTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecryptTableViewController.m; sourceTree = "<group>"; };
 		9A77EC3D1E993687002AB197 /* KeyInputTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyInputTableViewController.h; sourceTree = "<group>"; };
 		9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyInputTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		9A8074D51F023FB200A75C4A /* kbpgp-1.0.0-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "kbpgp-1.0.0-min.js"; sourceTree = "<group>"; };
-		9A8074D61F023FB200A75C4A /* pgpkeygen.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = pgpkeygen.js; sourceTree = "<group>"; };
-		9A8074D91F02433900A75C4A /* jquery-1.11.2.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-1.11.2.min.js"; sourceTree = "<group>"; };
 		9A8373FE1F85A516002CFCC6 /* TATabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TATabBarItem.h; sourceTree = "<group>"; };
 		9A8373FF1F85A516002CFCC6 /* TATabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TATabBarItem.m; sourceTree = "<group>"; };
 		9A87F8AF1F88398300556B8A /* EncryptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptViewController.h; sourceTree = "<group>"; };
@@ -149,8 +142,8 @@
 		9ABA35F31F77CC630065B2A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9AC4447D1F092999004F8B34 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		9AC4447E1F092999004F8B34 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		9ACA615A1F98C10C00A6424A /* PGPKey+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PGPKey+Additions.h"; sourceTree = "<group>"; };
-		9ACA615B1F98C10C00A6424A /* PGPKey+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PGPKey+Additions.m"; sourceTree = "<group>"; };
+		9ACA615A1F98C10C00A6424A /* PGPPartialKey+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PGPPartialKey+Additions.h"; sourceTree = "<group>"; };
+		9ACA615B1F98C10C00A6424A /* PGPPartialKey+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PGPPartialKey+Additions.m"; sourceTree = "<group>"; };
 		9ACA615E1F98C17300A6424A /* XApplication+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XApplication+Additions.m"; sourceTree = "<group>"; };
 		9ACA61611F98C1CC00A6424A /* NSString+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		9ADBB7C01F1FE37D00E1EFCE /* DocumentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentManager.h; sourceTree = "<group>"; };
@@ -159,6 +152,7 @@
 		9ADBB7C51F1FE97E00E1EFCE /* SignTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignTableViewController.m; sourceTree = "<group>"; };
 		9AE2426E1F1F8135003D992A /* DocumentBrowserTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentBrowserTableViewController.h; sourceTree = "<group>"; };
 		9AE2426F1F1F8135003D992A /* DocumentBrowserTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentBrowserTableViewController.m; sourceTree = "<group>"; };
+		9AE885211FA0924E0009EDC8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		9AFB15821F89570500F5175E /* TAImageLabelTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAImageLabelTableCellView.h; sourceTree = "<group>"; };
 		9AFB15831F89570500F5175E /* TAImageLabelTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAImageLabelTableCellView.m; sourceTree = "<group>"; };
 		9AFB15851F89585100F5175E /* NSColor+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+Additions.h"; sourceTree = "<group>"; };
@@ -169,11 +163,11 @@
 		9AFB158B1F8958D500F5175E /* UserInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInputViewController.h; sourceTree = "<group>"; };
 		9AFB158C1F8974DE00F5175E /* TADropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TADropView.h; sourceTree = "<group>"; };
 		9AFB158D1F8974DE00F5175E /* TADropView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TADropView.m; sourceTree = "<group>"; };
-		B1D8CEF3DFE042EB5EECA3EE /* Pods-iPGPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B93ADE6B489230BAA6944EE5 /* Pods-iPGP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.debug.xcconfig"; sourceTree = "<group>"; };
-		D8F70BE7C7885DA863BC9873 /* Pods-iPGPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests.release.xcconfig"; sourceTree = "<group>"; };
-		F9F687DAE0618156F869CB9C /* Pods-KeyboardExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardExtension/Pods-KeyboardExtension.release.xcconfig"; sourceTree = "<group>"; };
-		FEA973E6685F71823F058BC2 /* libPods-iPGP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAC4BBE870516D0DD1330799 /* Pods-iPGPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D48EA23229207EB8086331F1 /* Pods-iPGPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests.release.xcconfig"; sourceTree = "<group>"; };
+		D6E30BBAEEA06F8BAC2C2990 /* libPods-iPGPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPGPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5C63459F48BB74F2B63A82 /* Pods-iPGP-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		F023640BFA47517E8B187512 /* Pods-iPGP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPGP.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPGP/Pods-iPGP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC02888531256021E713778 /* libPods-iPGP.a in Frameworks */,
+				9A2A4CF51FC6331700AFD189 /* UserNotifications.framework in Frameworks */,
+				9A2A4CF31FC6330300AFD189 /* UIKit.framework in Frameworks */,
+				5237B1B70E78732D184CACA0 /* libPods-iPGP.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F59F7BEB43801C0F4292E26 /* libPods-iPGPTests.a in Frameworks */,
+				BEFEE370932132DC5AE46239 /* libPods-iPGPTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,28 +193,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E554A829EC0564775AFD697F /* libPods-iPGP-macOS.a in Frameworks */,
+				9AE885221FA0924E0009EDC8 /* AppKit.framework in Frameworks */,
+				984145B758E688B7F1036F47 /* libPods-iPGP-macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		800D52EA436391DF70339688 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6443E8439F87001D2E831617 /* Pods-KeyboardExtension.debug.xcconfig */,
-				F9F687DAE0618156F869CB9C /* Pods-KeyboardExtension.release.xcconfig */,
-				B93ADE6B489230BAA6944EE5 /* Pods-iPGP.debug.xcconfig */,
-				5DFD239731F9C0A67D50B842 /* Pods-iPGP.release.xcconfig */,
-				647891B824B0788FF6E17E51 /* Pods-iPGP-macOS.debug.xcconfig */,
-				55FA3106AE622824C0D34DAB /* Pods-iPGP-macOS.release.xcconfig */,
-				B1D8CEF3DFE042EB5EECA3EE /* Pods-iPGPTests.debug.xcconfig */,
-				D8F70BE7C7885DA863BC9873 /* Pods-iPGPTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		9A0EE2C81E9DCF24009EFE08 /* Keys MVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,8 +210,8 @@
 				9AAC73561E992DFB006577E2 /* KeyTableViewCell.m */,
 				9A77EC3D1E993687002AB197 /* KeyInputTableViewController.h */,
 				9A77EC3E1E993687002AB197 /* KeyInputTableViewController.m */,
-				9A14B4CF1EA17450006F1D03 /* NewKeyTableViewController.h */,
-				9A14B4D01EA17450006F1D03 /* NewKeyTableViewController.m */,
+				9A14B4CF1EA17450006F1D03 /* GenerateKeyTableViewController.h */,
+				9A14B4D01EA17450006F1D03 /* GenerateKeyTableViewController.m */,
 				9A14B4D21EA2444C006F1D03 /* KeyDetailsTableViewController.h */,
 				9A14B4D31EA2444C006F1D03 /* KeyDetailsTableViewController.m */,
 			);
@@ -265,8 +247,8 @@
 				9A5C5BAE1F08471400484C31 /* KeyboardExtension */,
 				9ABA35E91F77CC630065B2A9 /* iPGP-macOS */,
 				9A184D5D1E9258CB004E1211 /* Products */,
-				800D52EA436391DF70339688 /* Pods */,
-				DB68720E5925D5039AC5C988 /* Frameworks */,
+				E244785419ED0F079BB467D2 /* Pods */,
+				D9B907B0B3D0BE1D39325D98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 0;
@@ -323,16 +305,6 @@
 				9AFB158D1F8974DE00F5175E /* TADropView.m */,
 			);
 			name = "Custom UI Components";
-			sourceTree = "<group>";
-		};
-		9A2B21FD1F98CE3200934FC2 /* Javascript */ = {
-			isa = PBXGroup;
-			children = (
-				9A8074D91F02433900A75C4A /* jquery-1.11.2.min.js */,
-				9A8074D51F023FB200A75C4A /* kbpgp-1.0.0-min.js */,
-				9A8074D61F023FB200A75C4A /* pgpkeygen.js */,
-			);
-			name = Javascript;
 			sourceTree = "<group>";
 		};
 		9A42FD3F1F8D668500FA5379 /* ViewController */ = {
@@ -426,7 +398,6 @@
 		9ACA61581F98BC4000A6424A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				9A2B21FD1F98CE3200934FC2 /* Javascript */,
 				9A44327E1F03FAF500DF40F1 /* Loader.h */,
 				9A44327F1F03FAF500DF40F1 /* Loader.m */,
 				9A184D791E93C87D004E1211 /* XApplication+Additions.h */,
@@ -435,21 +406,36 @@
 				9ACA61611F98C1CC00A6424A /* NSString+Additions.m */,
 				9A2B21F81F98C66F00934FC2 /* NSDate+PGPAdditions.h */,
 				9A2B21F91F98C66F00934FC2 /* NSDate+PGPAdditions.m */,
-				9ACA615A1F98C10C00A6424A /* PGPKey+Additions.h */,
-				9ACA615B1F98C10C00A6424A /* PGPKey+Additions.m */,
+				9ACA615A1F98C10C00A6424A /* PGPPartialKey+Additions.h */,
+				9ACA615B1F98C10C00A6424A /* PGPPartialKey+Additions.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		DB68720E5925D5039AC5C988 /* Frameworks */ = {
+		D9B907B0B3D0BE1D39325D98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				34A6113F5D2E4613656D0A86 /* libPods-KeyboardExtension.a */,
-				FEA973E6685F71823F058BC2 /* libPods-iPGP.a */,
-				3927C6F4A35E5525BA0BCD63 /* libPods-iPGP-macOS.a */,
-				2FDD12A6832842B5497B7E97 /* libPods-iPGPTests.a */,
+				9A2A4CF41FC6331700AFD189 /* UserNotifications.framework */,
+				9A2A4CF21FC6330300AFD189 /* UIKit.framework */,
+				9AE885211FA0924E0009EDC8 /* AppKit.framework */,
+				3BFC786500418E2B23B766BB /* libPods-iPGP.a */,
+				5221AC3034D392EF63E52CDD /* libPods-iPGP-macOS.a */,
+				D6E30BBAEEA06F8BAC2C2990 /* libPods-iPGPTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E244785419ED0F079BB467D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B3FF2F4CD3DF8BBBD6F5464 /* Pods-iPGP.debug.xcconfig */,
+				F023640BFA47517E8B187512 /* Pods-iPGP.release.xcconfig */,
+				141DB39F4FE848B97FFFAA45 /* Pods-iPGP-macOS.debug.xcconfig */,
+				EF5C63459F48BB74F2B63A82 /* Pods-iPGP-macOS.release.xcconfig */,
+				BAC4BBE870516D0DD1330799 /* Pods-iPGPTests.debug.xcconfig */,
+				D48EA23229207EB8086331F1 /* Pods-iPGPTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,12 +445,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A184D761E9258CC004E1211 /* Build configuration list for PBXNativeTarget "iPGP" */;
 			buildPhases = (
-				DBAE1ADF3FD5F97CC910BEAE /* [CP] Check Pods Manifest.lock */,
+				36B450D1DFD712FABA490408 /* [CP] Check Pods Manifest.lock */,
 				9A184D581E9258CB004E1211 /* Sources */,
 				9A184D591E9258CB004E1211 /* Frameworks */,
 				9A184D5A1E9258CB004E1211 /* Resources */,
-				EF00C7D9D7A92BBEE39BEA66 /* [CP] Embed Pods Frameworks */,
-				870F55374B8ABD1DD7C945E0 /* [CP] Copy Pods Resources */,
+				E38B0FB84D9924E1DD57189A /* [CP] Embed Pods Frameworks */,
+				12C473AF742925D0E3891FE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -479,12 +465,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AB2BDAB1EF7378F0003B2E0 /* Build configuration list for PBXNativeTarget "iPGPTests" */;
 			buildPhases = (
-				88898F2C6605314066837A40 /* [CP] Check Pods Manifest.lock */,
+				6179A308370908A84C9F2685 /* [CP] Check Pods Manifest.lock */,
 				9AB2BDA01EF7378F0003B2E0 /* Sources */,
 				9AB2BDA11EF7378F0003B2E0 /* Frameworks */,
 				9AB2BDA21EF7378F0003B2E0 /* Resources */,
-				ADFA8C7A9DA3F215F66EC0A9 /* [CP] Embed Pods Frameworks */,
-				22E621B250DCFE6368B31DFF /* [CP] Copy Pods Resources */,
+				00A02E0D4BA6F0A5D9E00FC7 /* [CP] Embed Pods Frameworks */,
+				5617C5ABC92B7887BB7D804D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -500,12 +486,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ABA35FB1F77CC630065B2A9 /* Build configuration list for PBXNativeTarget "iPGP-macOS" */;
 			buildPhases = (
-				E2973CAE401703B52ED3DADF /* [CP] Check Pods Manifest.lock */,
+				3E73B7A33F8497CE805BAE64 /* [CP] Check Pods Manifest.lock */,
 				9ABA35E41F77CC630065B2A9 /* Sources */,
 				9ABA35E51F77CC630065B2A9 /* Frameworks */,
 				9ABA35E61F77CC630065B2A9 /* Resources */,
-				AA118F4FBC543D0C038E91AF /* [CP] Embed Pods Frameworks */,
-				478BD4E69BAEC29C78845B67 /* [CP] Copy Pods Resources */,
+				7EA1BE278207D901E76B3CCD /* [CP] Embed Pods Frameworks */,
+				9BB8F76A2022E3FC05EAEDB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -522,18 +508,25 @@
 		9A184D541E9258CB004E1211 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TA;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "RedWarp Studio";
+				ORGANIZATIONNAME = "Tom Albrecht";
 				TargetAttributes = {
 					9A184D5B1E9258CB004E1211 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 926KKM9MPQ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
 							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -559,7 +552,7 @@
 				};
 			};
 			buildConfigurationList = 9A184D571E9258CB004E1211 /* Build configuration list for PBXProject "iPGP" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -584,12 +577,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8074D71F023FB200A75C4A /* kbpgp-1.0.0-min.js in Resources */,
 				9A184D721E9258CB004E1211 /* LaunchScreen.storyboard in Resources */,
 				9A19F7471F77FCC600981AF7 /* Media.xcassets in Resources */,
-				9A8074D81F023FB200A75C4A /* pgpkeygen.js in Resources */,
 				9A3E50451F2025C200093D37 /* Localizable.strings in Resources */,
-				9A8074DA1F02439400A75C4A /* jquery-1.11.2.min.js in Resources */,
 				9A184D6D1E9258CB004E1211 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,9 +595,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AD0CE3C1F8EA1F50009534C /* kbpgp-1.0.0-min.js in Resources */,
-				9AD0CE3B1F8EA1F50009534C /* jquery-1.11.2.min.js in Resources */,
-				9AD0CE3D1F8EA1F50009534C /* pgpkeygen.js in Resources */,
 				9A19F7461F77FC9F00981AF7 /* Media.xcassets in Resources */,
 				9ABA35F41F77CC630065B2A9 /* Main.storyboard in Resources */,
 			);
@@ -616,85 +603,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22E621B250DCFE6368B31DFF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		478BD4E69BAEC29C78845B67 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		870F55374B8ABD1DD7C945E0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP/Pods-iPGP-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		88898F2C6605314066837A40 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iPGPTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA118F4FBC543D0C038E91AF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADFA8C7A9DA3F215F66EC0A9 /* [CP] Embed Pods Frameworks */ = {
+		00A02E0D4BA6F0A5D9E00FC7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -709,7 +618,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DBAE1ADF3FD5F97CC910BEAE /* [CP] Check Pods Manifest.lock */ = {
+		12C473AF742925D0E3891FE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP/Pods-iPGP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36B450D1DFD712FABA490408 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -727,7 +651,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E2973CAE401703B52ED3DADF /* [CP] Check Pods Manifest.lock */ = {
+		3E73B7A33F8497CE805BAE64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -745,15 +669,88 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EF00C7D9D7A92BBEE39BEA66 /* [CP] Embed Pods Frameworks */ = {
+		5617C5ABC92B7887BB7D804D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGPTests/Pods-iPGPTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6179A308370908A84C9F2685 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iPGPTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EA1BE278207D901E76B3CCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS-frameworks.sh",
+				"${PODS_ROOT}/ObjectivePGP/Frameworks/macosx/ObjectivePGP.framework",
+				"${PODS_ROOT}/ObjectivePGP/Frameworks/macosx/ObjectivePGP.framework.dSYM",
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectivePGP.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/ObjectivePGP.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BB8F76A2022E3FC05EAEDB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPGP-macOS/Pods-iPGP-macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E38B0FB84D9924E1DD57189A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iPGP/Pods-iPGP-frameworks.sh",
+				"${PODS_ROOT}/ObjectivePGP/Frameworks/ios/ObjectivePGP.framework",
+				"${PODS_ROOT}/ObjectivePGP/Frameworks/ios/ObjectivePGP.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectivePGP.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/ObjectivePGP.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -767,7 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A14B4D11EA17450006F1D03 /* NewKeyTableViewController.m in Sources */,
+				9A14B4D11EA17450006F1D03 /* GenerateKeyTableViewController.m in Sources */,
 				9AAC73571E992DFB006577E2 /* KeyTableViewCell.m in Sources */,
 				9A6F82E31E9DDB5700CB563B /* DecryptTableViewController.m in Sources */,
 				9A77EC3F1E993687002AB197 /* KeyInputTableViewController.m in Sources */,
@@ -783,7 +780,7 @@
 				9A0EE2CD1E9DCFA3009EFE08 /* RecipientsTableViewController.m in Sources */,
 				9ACA615F1F98C17300A6424A /* XApplication+Additions.m in Sources */,
 				9ADBB7C21F1FE37D00E1EFCE /* DocumentManager.m in Sources */,
-				9ACA615C1F98C10C00A6424A /* PGPKey+Additions.m in Sources */,
+				9ACA615C1F98C10C00A6424A /* PGPPartialKey+Additions.m in Sources */,
 				9ACA61621F98C1CC00A6424A /* NSString+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -807,7 +804,7 @@
 				9A44F2191F88F24B00629D39 /* GenerateKeyViewController.m in Sources */,
 				9A8374001F85A516002CFCC6 /* TATabBarItem.m in Sources */,
 				9ACA61591F98BD1F00A6424A /* Loader.m in Sources */,
-				9ACA615D1F98C10C00A6424A /* PGPKey+Additions.m in Sources */,
+				9ACA615D1F98C10C00A6424A /* PGPPartialKey+Additions.m in Sources */,
 				9AFB158E1F8974DE00F5175E /* TADropView.m in Sources */,
 				9A87F8B11F88398300556B8A /* EncryptViewController.m in Sources */,
 				9A14282C1F9FC672005D181A /* UserInputViewController.m in Sources */,
@@ -900,7 +897,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -919,7 +915,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -955,7 +951,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -968,7 +963,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -978,47 +973,52 @@
 		};
 		9A184D771E9258CC004E1211 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B93ADE6B489230BAA6944EE5 /* Pods-iPGP.debug.xcconfig */;
+			baseConfigurationReference = 1B3FF2F4CD3DF8BBBD6F5464 /* Pods-iPGP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = iPGP/iPGP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 926KKM9MPQ;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iPGP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.defense2000x.iPGP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2170ab28-2f62-475e-bb13-d271a19edb49";
+				PROVISIONING_PROFILE_SPECIFIER = "com defense2000x iPGP iOS";
 			};
 			name = Debug;
 		};
 		9A184D781E9258CC004E1211 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DFD239731F9C0A67D50B842 /* Pods-iPGP.release.xcconfig */;
+			baseConfigurationReference = F023640BFA47517E8B187512 /* Pods-iPGP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = iPGP/iPGP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 926KKM9MPQ;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = iPGP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.defense2000x.iPGP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "cee139d0-5b28-4775-a838-702cacfa7209";
+				PROVISIONING_PROFILE_SPECIFIER = "com defense2000x iPGP iOS";
 			};
 			name = Release;
 		};
 		9AB2BDAC1EF7378F0003B2E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1D8CEF3DFE042EB5EECA3EE /* Pods-iPGPTests.debug.xcconfig */;
+			baseConfigurationReference = BAC4BBE870516D0DD1330799 /* Pods-iPGPTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1040,7 +1040,7 @@
 		};
 		9AB2BDAD1EF7378F0003B2E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8F70BE7C7885DA863BC9873 /* Pods-iPGPTests.release.xcconfig */;
+			baseConfigurationReference = D48EA23229207EB8086331F1 /* Pods-iPGPTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1062,11 +1062,13 @@
 		};
 		9ABA35F91F77CC630065B2A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 647891B824B0788FF6E17E51 /* Pods-iPGP-macOS.debug.xcconfig */;
+			baseConfigurationReference = 141DB39F4FE848B97FFFAA45 /* Pods-iPGP-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = iPGP/iPGP.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1087,11 +1089,13 @@
 		};
 		9ABA35FA1F77CC630065B2A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55FA3106AE622824C0D34DAB /* Pods-iPGP-macOS.release.xcconfig */;
+			baseConfigurationReference = EF5C63459F48BB74F2B63A82 /* Pods-iPGP-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = iPGP/iPGP.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";

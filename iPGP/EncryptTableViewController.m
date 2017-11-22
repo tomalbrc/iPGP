@@ -3,11 +3,12 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 11.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "EncryptTableViewController.h"
 #import "XApplication+Additions.h"
+#import "NSString+Additions.h"
 
 #define kPublicKeyBeginLine @"-----BEGIN PGP PUBLIC KEY BLOCK-----"
 #define kPublicKeyEndLine @"-----END PGP PUBLIC KEY BLOCK-----"
@@ -29,20 +30,22 @@
 }
 
 - (void)encryptMessage {
-    if (publicKey && [publicKey type] == PGPKeyPublic) {
+    if (publicKey && ![publicKey isSecret]) {
         NSData *data = [msgTF.text dataUsingEncoding:NSUTF8StringEncoding];
         
         NSError *error = nil;
         NSData *encryptedData = nil;
         @try {
-            encryptedData = [[[UIApplication sharedApplication] objectivePGP] encryptData:data usingPublicKey:publicKey armored:YES error:&error];
+            encryptedData = [[[UIApplication sharedApplication] objectivePGP] encrypt:data usingKeys:@[publicKey] armored:YES error:&error];
         } @catch (NSException *exception) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 msgTF.text = [NSString stringWithFormat:@"%@", exception.reason];
             });
         } @finally {
-            if (!error) msgTF.text = [[NSString alloc] initWithData:encryptedData encoding:NSASCIIStringEncoding];
-            else msgTF.text = error.localizedDescription;
+            if (!error) {
+                msgTF.text = [[NSString alloc] initWithData:encryptedData encoding:NSASCIIStringEncoding];
+                msgTF.text = [msgTF.text originatedString];
+            } else msgTF.text = error.localizedDescription;
         }
         
     } else {
@@ -103,7 +106,7 @@
 @class PGPSubKey;
 - (void)recipientTableViewController:(RecipientsTableViewController *)recipientsTableViewController didSelectKey:(PGPKey *)key {
     publicKey = key;
-    recipientLbl.text = [key.users.firstObject userID];
+    recipientLbl.text = [key.publicKey.users.firstObject userID];
 }
 
 

@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 07.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "UserInputViewController.h"
@@ -19,31 +19,28 @@
     [super viewDidLoad];
     // Do view setup here.
     
-    _textView.string = @"";
-    _textView.richText = NO;
-    _textView.font = [NSFont systemFontOfSize:15.f];
-    
+    self.textView.string = @"";
+    self.textView.richText = NO;
+    self.textView.font = [NSFont systemFontOfSize:15.f];
 }
 
 
 
 
 - (nullable NSData *)userData {
-    if ([_tabView.tabViewItems indexOfObject:_tabView.selectedTabViewItem] == 0)
-        return [_textView.string dataUsingEncoding:NSUTF8StringEncoding];
-    else
-        return [NSData dataWithContentsOfURL:_dropView.fileURL];
-    
-    return nil;
+    if (!self.isFile) {
+        return [self.textView.string dataUsingEncoding:NSUTF8StringEncoding];
+    } else {
+        NSError *error;
+        NSData *result = [NSData dataWithContentsOfFile:_dropView.fileURL.path options:0 error:&error];
+        NSLog(@"File load error: %@", error);
+        return result;
+    }
 }
+
 - (BOOL)isFile {
-    return [_tabView.tabViewItems indexOfObject:_tabView.selectedTabViewItem] == 1;
+    return _tabView.tabViewItems.lastObject == _tabView.selectedTabViewItem;
 }
-
-- (void)setString:(nullable NSString *)string {
-    _textView.string = string;
-}
-
 
 
 
@@ -51,16 +48,14 @@
 - (IBAction)chooseFile:(id)sender {
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
     [openPanel setAllowedFileTypes:nil];
-    [openPanel runModal];/* beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
+    [openPanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
         NSLog(@"NSOpenPanel result: %ld", (long)result);
-        if (result == NSModalResponseContinue) {
+        if (result) {
             NSURL *url = openPanel.URL;
             NSLog(@"Selected file URL: %@", url);
-            _dropView.image = [NSWorkspace.sharedWorkspace iconForFile:url.path];
+            _dropView.fileURL = url;
         }
-    }];*/
+    }];
 }
-
-
 
 @end

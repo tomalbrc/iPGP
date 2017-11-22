@@ -3,11 +3,10 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 07.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 
 @class PGPKey;
 
@@ -16,7 +15,7 @@
 - (void)generateKeyViewController:(GenerateKeyViewController *)generateKeyViewController didFinishWithKeys:(NSArray<PGPKey *> *)keys;
 @end
 
-@interface GenerateKeyViewController : NSViewController <WKScriptMessageHandler> {
+@interface GenerateKeyViewController : NSViewController {
     IBOutlet NSPopUpButton *keyLengthSelection;
     IBOutlet NSPopUpButton *algoSelection;
     
@@ -25,7 +24,10 @@
     IBOutlet NSTextField *passwordLabel;
     IBOutlet NSTextField *passwordVerifyLabel;
 
-    
+    IBOutlet NSTextField *expirationDateLabel;
+    IBOutlet NSDatePicker *expirationDatePicker;
+    IBOutlet NSButton *expiresCheckboxButton;
+
     IBOutlet NSTextField *nameTF;
     IBOutlet NSTextField *emailTF;
     IBOutlet NSTextField *commentTF;
@@ -36,5 +38,7 @@
 @property (weak, nonatomic) id<GenerateKeyViewControllerDelegate> delegate;
 
 - (IBAction)generate:(id)sender;
+
+- (IBAction)expirationDateCheckboxValueChanged:(NSButton *)sender;
 
 @end

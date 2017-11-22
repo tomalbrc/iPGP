@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 28.09.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "TATabBarController.h"
@@ -48,10 +48,5 @@
     oldSelectedButtonIndex = sender.tag;
 }
 
-- (void)setActive:(BOOL)active {
-    if (active) {
-        
-    }
-}
 
 @end

@@ -3,17 +3,16 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 15.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "KeyDetailsTableViewController.h"
-#import "ObjectivePGP/PGPPublicKeyPacket.h"
-#import "ObjectivePGP/PGPSecretKeyPacket.h"
-#import "ObjectivePGP/PGPSignatureSubpacket.h"
+#import <ObjectivePGP/ObjectivePGP.h>
+#import <ObjectivePGP/PGPPublicKeyPacket.h>
 #import "XApplication+Additions.h"
 
 #import "NSString+Additions.h"
-#import "PGPKey+Additions.h"
+#import "PGPPartialKey+Additions.h"
 #import "NSDate+PGPAdditions.h"
 
 #define kHasComment ([[self.key users].firstObject userID].PGPComment && [[self.key users].firstObject userID].PGPComment.length)
@@ -31,22 +30,21 @@ static NSString *kDefaultDateFormat = @"dd.MM.yyyy HH:mm";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    PGPUser *usr = self.key.isPublic ? self.key.publicKey.users.firstObject : self.key.secretKey.users.firstObject;
+    PGPPartialKey *partialKey = self.key.isPublic ? self.key.publicKey : self.key.secretKey;
+    PGPPublicKeyPacket *packet = (PGPPublicKeyPacket *)partialKey.primaryKeyPacket;
     
-    PGPUser *usr = [self.key users].firstObject;
-    PGPPublicKeyPacket *packet = (PGPPublicKeyPacket *)[self.key primaryKeyPacket];
-    algoLbl.text = [NSString stringForKeyType:packet.publicKeyAlgorithm];
+    NSString *algoString = [NSString stringForKeyType:[packet publicKeyAlgorithm]];
+
+    algoLbl.text = algoString;
     keysizeLbl.text = [NSString stringWithFormat:@"%ld bit", (unsigned long)packet.keySize*8];
     
-    if ([[self.key primaryKeyPacket] class] == [PGPPublicKeyPacket class]) {
+    if (!self.key.isSecret) {
         keytypeLbl.text = NSLocalizedString(@"Public", @"Private/Public Label");
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showShareOptions:)];
-    }
-    else if ([[self.key primaryKeyPacket] class] == [PGPSecretKeyPacket class]) {
+    } else {
         keytypeLbl.text = NSLocalizedString(@"Private", @"Private/Public Label");
-        
-        
     }
     
     
@@ -73,14 +71,14 @@ static NSString *kDefaultDateFormat = @"dd.MM.yyyy HH:mm";
     }
     
     
-    long expirationTime = [self.key expirationTime];
+    long expirationTime = [self.key.isPublic ? self.key.publicKey : self.key.publicKey expirationTime];
     
     creationLbl.text = [[packet createDate] stringWithFormat:kDefaultDateFormat];
     expiresLbl.text = expirationTime == 0 ? NSLocalizedString(@"Never", @"Never Label") : [[[packet createDate] dateByAddingTimeInterval:expirationTime] stringWithFormat:kDefaultDateFormat];
     expiresLbl.enabled = expirationTime > 0;
     
-    shortKeyLbl.text = [[self.key keyID] shortKeyString];
-    longKeyLbl.text = [[self.key keyID] longKeyString];
+    shortKeyLbl.text = self.key.keyID.shortIdentifier;
+    longKeyLbl.text = self.key.keyID.longIdentifier;
 }
 
 - (void)showShareOptions:(id)sender {

@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 12.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "RecipientsTableViewController.h"
@@ -33,7 +33,7 @@
     [super viewWillAppear:animated];
     
     [[[UIApplication sharedApplication] objectivePGP].keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([(PGPKey *)obj type] == PGPKeyPublic) [publicKeys addObject:obj];
+        if ([(PGPKey *)obj isPublic]) [publicKeys addObject:obj];
     }];
 }
 
@@ -70,7 +70,8 @@
         keyCell.emailLabel.text = [usr userID].PGPEmail;
         keyCell.descriptionLabel.text = [usr userID].PGPComment;
         keyCell.accessoryType = UITableViewCellAccessoryNone;
-        [keyCell setKeytype:PGPKeyPublic];
+        [keyCell setPublic:[publicKeys[indexPath.row] isPublic]];
+        [keyCell setSecret:[publicKeys[indexPath.row] isSecret]];
     }
     
     return cell;
@@ -92,7 +93,7 @@
     } else {
         KeyInputTableViewController *ki = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyInputTableViewController"];
         ki.delegate = self;
-        ki.preferredType = PGPKeyPublic;
+        ki.prefersPublic = [publicKeys[indexPath.row] isPublic];
         ki.navigationItem.leftBarButtonItem = nil;
         ki.title = @"ASCII armored Key";
         ki.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];

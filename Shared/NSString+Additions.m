@@ -3,33 +3,39 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 19.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "NSString+Additions.h"
 
 @implementation NSString (PGPAdditions)
 
+- (nonnull NSString *)originatedString {
+    NSString *s = [self stringByReplacingOccurrencesOfString:@"Comment: https://www.objectivepgp.com\n" withString:@""];
+    return [s stringByReplacingOccurrencesOfString:@"ObjectivePGP" withString:@"iPGP"];
+}
+
+
 - (BOOL)isValidKey {
     return [self isValidPublicKey] || [self isValidPrivateKey];
 }
 - (BOOL)isValidPublicKey {
-    return YES;
+    return [self hasPrefix:@"-----BEGIN PGP PUBLIC KEY BLOCK-----"] && [self containsString:@"-----END PGP PUBLIC KEY BLOCK-----"];
 }
 - (BOOL)isValidPrivateKey {
-    return NO;
+    return [self hasPrefix:@"-----BEGIN PGP PRIVATE KEY BLOCK-----"] && [self containsString:@"-----END PGP PRIVATE KEY BLOCK-----"];
 }
 - (BOOL)isValidMessage {
-    return NO;
+    return [self hasPrefix:@"-----BEGIN PGP MESSAGE-----"] && [self containsString:@"-----END PGP MESSAGE-----"];
 }
 - (BOOL)isValidSignature {
-    return NO;
+    return ([self hasPrefix:@"-----BEGIN PGP SIGNATURE-----"] && [self containsString:@"-----END PGP SIGNATURE-----"]) ||[self isValidMessage];
 }
 
 
 
 
-- (NSString *)PGPName {
+- (nullable NSString *)PGPName {
     NSRange range = [self rangeOfString:@" <"];
     NSRange range2 = [self rangeOfString:@" ("];
     if (range.location == NSNotFound && range2.location == NSNotFound) return self;
@@ -37,7 +43,7 @@
     return [self substringWithRange:NSMakeRange(0, range.location < range2.location ? range.location : range2.location)];
 }
 
-- (NSString *)PGPEmail {
+- (nullable NSString *)PGPEmail {
     __block NSString *res = nil;
     NSString *test = self;
     NSRegularExpression *expr = [NSRegularExpression regularExpressionWithPattern:@"<.*>" options:0 error:NULL];
@@ -49,7 +55,7 @@
     return res;
 }
 
-- (NSString *)PGPComment {
+- (nullable NSString *)PGPComment {
     __block NSString *res = nil;
     NSString *test = self;
     NSRegularExpression *expr = [NSRegularExpression regularExpressionWithPattern:@"\\(.*\\)" options:0 error:NULL];
@@ -62,7 +68,7 @@
 }
 
 
-+ (NSString *)stringForKeyType:(PGPPublicKeyAlgorithm)algo {
++ (nonnull NSString *)stringForKeyType:(PGPPublicKeyAlgorithm)algo {
     NSString *res = nil;
     switch (algo) {
         case PGPPublicKeyAlgorithmRSA:
@@ -76,10 +82,11 @@
         case PGPPublicKeyAlgorithmDSA:
             res = @"DSA"; break;
         case PGPPublicKeyAlgorithmElliptic:
-            res = @"Elliptic";
+            res = @"Elliptic"; break;
         case PGPPublicKeyAlgorithmECDSA:
-            res = @"ECDSA";
-        default: break;
+            res = @"ECDSA"; break;
+        default:
+            res = @"Unknown"; break;
     }
     return res;
 }

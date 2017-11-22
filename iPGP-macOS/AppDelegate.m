@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 24.09.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -20,10 +20,10 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    NSWindow *window = [[NSApplication sharedApplication] mainWindow];
+    NSWindow *window = [NSApplication sharedApplication].mainWindow;
     window.movableByWindowBackground = YES;
     window.contentView.wantsLayer = YES;
-    window.backgroundColor = [NSColor colorWithWhite:0.99f alpha:1.f];
+    //window.backgroundColor = [NSColor colorWithWhite:0.99f alpha:1.f];
     
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -38,17 +38,6 @@
 }
 
 
-
-
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification {
-    NSWindow *window = [[NSApplication sharedApplication] mainWindow];
-    TATabBarController *c = window.contentViewController;
-    [c setActive:NO];
-}
-- (void)applicationDidResignActive:(NSNotification *)notification {
-    
-}
 
 
 @end

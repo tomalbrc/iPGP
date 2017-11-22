@@ -1,13 +1,13 @@
 //
-//  PGPKey+Additions.h
+//  PGPPartialKey+Additions.h
 //  iPGP
 //
 //  Created by Tom Albrecht on 19.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <ObjectivePGP/ObjectivePGP.h>
 
-@interface PGPKey (Additions)
+@interface PGPPartialKey (Additions)
 - (long)expirationTime;
 @end

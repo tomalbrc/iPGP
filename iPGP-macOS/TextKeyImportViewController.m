@@ -3,7 +3,7 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 07.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "TextKeyImportViewController.h"
@@ -26,7 +26,7 @@
     NSString *keyString = _textView.string;
     NSData *keyStringData = [keyString dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSArray *keys = [[[NSApplication sharedApplication] objectivePGP] keysFromData:keyStringData];
+    NSArray *keys = [ObjectivePGP readKeysFromData:keyStringData];
     return keys;
 }
 
@@ -40,7 +40,7 @@
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString {
     NSString *keyString = _textView.string;
     NSData *keyStringData = [keyString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *keys = [[[NSApplication sharedApplication] objectivePGP] keysFromData:keyStringData];
+    NSArray *keys = [ObjectivePGP readKeysFromData:keyStringData];
     
     _importButton.enabled = (keys && keys.count > 0);
     

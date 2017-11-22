@@ -3,25 +3,21 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 28.06.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+@class PGPKey;
 
 @interface Loader : NSObject
 /**
- * Loads keys from iOS/OSX Keychain into memory
+ * Loads keys from iOS/OSX Keychain into XApplication's objetivePGP instance
  */
-+ (NSArray *)loadKeys;
++ (void)loadKeys;
 
 /**
- * Adds a key (ASCII key as NSData*)
+ * Saves all current keys in keychain
  */
-+ (void)addKeys:(NSArray<NSData *> *)keyDataArray;
-
-/**
- * Removes specific key by data
- */
-+ (void)removeKeys:(NSArray<NSData*> *)keyDataArray;
++ (void)save;
 
 @end

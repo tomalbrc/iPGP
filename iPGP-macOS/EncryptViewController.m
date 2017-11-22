@@ -3,10 +3,12 @@
 //  iPGP-macOS
 //
 //  Created by Tom Albrecht on 07.10.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "EncryptViewController.h"
+
+#import "NSString+Additions.h"
 
 #import "XApplication+Additions.h"
 #import "UserInputViewController.h"
@@ -27,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _textView.string = @"";
     [self switchSignBox:_signeeSelection];
 }
 
@@ -36,43 +37,48 @@
     if (_userInputViewController && keys.count) {
         NSError *error;
         NSData *res;
+        NSData *userData = _userInputViewController.userData;
+        
         if (_signCheckBox.state == NSControlStateValueOn) {
-            res = [[NSApplication.sharedApplication objectivePGP] encryptData:_userInputViewController.userData usingPublicKeys:keys signWithSecretKey:PGPKeys[0] passphrase:_passwordTextField.stringValue armored:YES error:&error];
+            res = [[NSApplication.sharedApplication objectivePGP] encrypt:userData usingKeys:keys signWithKey:PGPKeys[0] passphrase:_passwordTextField.stringValue armored:!_userInputViewController.isFile error:&error];
         } else {
-            NSData *data = _userInputViewController.userData;
-            res = [[NSApplication.sharedApplication objectivePGP] encryptData:data usingPublicKeys:keys armored:YES error:&error];
+            res = [[NSApplication.sharedApplication objectivePGP] encrypt:userData usingKeys:keys armored:!_userInputViewController.isFile error:&error];
         }
-            
+        
         if (error || !res) { // Show error
             NSAlert *alert = [NSAlert alertWithError:error];
             [alert runModal];
         } else { // Success
-            NSString *encryptedString = [[NSString alloc] initWithData:res encoding:NSUTF8StringEncoding];
-            encryptedString = [encryptedString stringByReplacingOccurrencesOfString:@"ObjectivePGP" withString:@"iPGP"];
-            
-            // Make that optional
-            if (_saveFileCheckBox.state == NSControlStateValueOff)
-                [_userInputViewController setString:encryptedString];
-            else
-                [self saveStringUsingSavePanel:encryptedString];
+            // TODO: Make that optional
+            if (_saveFileCheckBox.state == NSControlStateValueOff && !_userInputViewController.isFile) {
+                NSString *encryptedString = [[NSString alloc] initWithData:res encoding:NSUTF8StringEncoding];
+                encryptedString = [encryptedString originatedString];
+                
+                [_userInputViewController.textView setString:encryptedString];
+            } else {
+                [self saveDataUsingSavePanel:res];
+            }
         }
     }
 }
 
-- (void)saveStringUsingSavePanel:(NSString *)encryptedString {
+- (void)saveDataUsingSavePanel:(NSData *)encryptedData {
     NSSavePanel *_savePanel = [NSSavePanel savePanel];
-    [_savePanel setAllowedFileTypes:@[@"txt"]];
+    
+    // TODO: do
+    //[_savePanel setRepresentedURL:nil];
+    
     _savePanel.directoryURL = [NSURL URLWithString:[@"~/" stringByExpandingTildeInPath]];
     [_savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
-        NSURL *url = [_savePanel URL];
-        NSString *filename = url.path;
-        NSLog(@"Filename: %@", filename);
-        
-        NSError *err;
-        [encryptedString writeToURL:url atomically:NO encoding:NSUTF8StringEncoding error:&err];
-        if (err) {
-            NSAlert *alert = [NSAlert alertWithError:err];
-            [alert runModal];
+        if (result) {
+            NSURL *url = [_savePanel URL];
+            NSString *filename = url.path;
+            NSLog(@"Filename: %@", filename);
+            
+            if (![encryptedData writeToURL:url atomically:NO]) {
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert runModal];
+            }
         }
     }];
 }
@@ -84,6 +90,18 @@
     _passwordTextField.enabled = flag;
     _passwordLbl.textColor = flag ? [NSColor blackColor] : [NSColor grayColor];
     _signeeLbl.textColor = flag ? [NSColor blackColor] : [NSColor grayColor];
+    
+    // move to view will appear
+    if (!flag) {
+        [_signeeSelection removeAllItems];
+    } else {
+        for (PGPKey *key in PGPKeys) {
+            if (key.isSecret) {
+                PGPPartialKey *partialKey = key.isSecret ? key.secretKey : key.publicKey;
+                [_signeeSelection addItemWithTitle:[partialKey.users.firstObject userID]];
+            }
+        }
+    }
 }
 
 
@@ -97,18 +115,18 @@
 
 - (nullable NSString *)tokenField:(NSTokenField *)tokenField displayStringForRepresentedObject:(id)representedObject {
     PGPKey *key = representedObject;
-    return [key.users.firstObject userID];
+    return [key.publicKey.users.firstObject userID].PGPName;
     return nil;
 }
 - (nullable NSString *)tokenField:(NSTokenField *)tokenField editingStringForRepresentedObject:(id)representedObject {
     PGPKey *key = representedObject;
-    return [key.users.firstObject userID];
+    return [key.publicKey.users.firstObject userID];
     return nil;
 }
 - (nullable id)tokenField:(NSTokenField *)tokenField representedObjectForEditingString:(NSString *)editingString {
     for (PGPKey *key in PGPKeys) {
-        if (key.type == PGPKeyPublic) {
-            if ([[key.users.firstObject userID].lowercaseString containsString:editingString.lowercaseString]) {
+        if (key.isPublic) {
+            if ([[key.publicKey.users.firstObject userID].lowercaseString containsString:editingString.lowercaseString]) {
                 return key;
             }
         }
@@ -121,9 +139,9 @@
     NSMutableArray *res = [NSMutableArray array];
     
     for (PGPKey *key in PGPKeys) {
-        if (key.type == PGPKeyPublic) {
-            if ([[key.users.firstObject userID].lowercaseString containsString:substring.lowercaseString]) {
-                [res addObject:[key.users.firstObject userID]];
+        if (key.isPublic) {
+            if ([[key.publicKey.users.firstObject userID].lowercaseString hasPrefix:substring.lowercaseString]) {
+                [res addObject:[key.publicKey.users.firstObject userID]];
             }
         }
     }

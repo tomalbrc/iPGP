@@ -3,7 +3,7 @@
 //  iPGP
 //
 //  Created by Tom Albrecht on 08.04.17.
-//  Copyright © 2017 RedWarp Studio. All rights reserved.
+//  Copyright © 2017 Tom Albrecht. All rights reserved.
 //
 
 #import "KeysTableViewController.h"
@@ -12,7 +12,7 @@
 #import "XApplication+Additions.h"
 #import "ObjectivePGP/ObjectivePGP.h"
 
-#import "NewKeyTableViewController.h"
+#import "GenerateKeyTableViewController.h"
 #import "Loader.h"
 #import "NSString+Additions.h"
 
@@ -28,20 +28,21 @@
     UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"Generate Keypair" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // Show new key view controller
         UINavigationController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewKeyTableViewControllerContainer"];
-        vc.modalPresentationStyle = UIModalPresentationPopover;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         vc.popoverPresentationController.barButtonItem = sender;
-        // TODO: Fix casting..?
-        [(NewKeyTableViewController *)[vc viewControllers].firstObject setDelegate:self];
-        [self presentViewController:vc animated:YES completion:^{
-            
-        }];
+        // TODO: Fix casting..? // using segues!!.. l8er bruh
+        [(GenerateKeyTableViewController *)[vc viewControllers].firstObject setDelegate:self];
+        [self presentViewController:vc animated:YES completion:NULL];
     }];
     UIAlertAction *importAction = [UIAlertAction actionWithTitle:@"Import ASCII Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UINavigationController *nc = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyInputTableViewControllerContainer"];
         nc.popoverPresentationController.barButtonItem = sender;
+        nc.modalPresentationStyle = UIModalPresentationFormSheet;
+        
         KeyInputTableViewController *kitvc = nc.viewControllers[0];
         kitvc.delegate = self;
+        
         [self presentViewController:nc animated:YES completion:NULL];
     }];
     [ac addAction:cancelAction];
@@ -72,8 +73,8 @@
 - (void)keyInputTableViewController:(KeyInputTableViewController *)keyInputTableViewController didFinishWithKey:(PGPKey *)key {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
-    NSData *newKeyData = [[[UIApplication sharedApplication] objectivePGP] exportKey:key armored:YES];
-    [Loader addKeys:@[newKeyData]];
+    [UIApplication.sharedApplication.objectivePGP importKeys:@[key]];
+    [Loader save];
     
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:PGPKeys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -84,18 +85,18 @@
 
 #pragma mark - NewKeyTableViewController Delegate
 
-- (void)newKeyTableViewController:(NewKeyTableViewController *)viewController didFinishWithKeys:(NSArray<PGPKey *> *)pkeys {
+- (void)newKeyTableViewController:(GenerateKeyTableViewController *)viewController didFinishWithKeys:(NSArray<PGPKey *> *)pkeys {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
-    for (PGPKey *key in pkeys) {
-        NSData *newKeyData = [[[UIApplication sharedApplication] objectivePGP] exportKey:key armored:YES];
-        [Loader addKeys:@[newKeyData]];
-        
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:PGPKeys.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    [[XApplication sharedApplication].objectivePGP importKeys:pkeys];
+    
+    [Loader save];
+    
+    [self.tableView reloadData];
+    //[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)newKeyTableViewControllerDidCancel:(NewKeyTableViewController *)viewController {
+- (void)newKeyTableViewControllerDidCancel:(GenerateKeyTableViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -113,11 +114,12 @@
     KeyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     PGPKey *key = PGPKeys[indexPath.row];
-    PGPUser *user = key.users.firstObject;
+    PGPUser *user = key.isPublic ? key.publicKey.users.firstObject : key.secretKey.users.firstObject;
     cell.usernameLabel.text = user.userID.PGPName;
     cell.descriptionLabel.text = user.userID.PGPComment;
     cell.emailLabel.text = user.userID.PGPEmail;
-    [cell setKeytype:[key type]];
+    [cell setPublic:[key isPublic]];
+    [cell setSecret:[key isSecret]];
     
     return cell;
 }
@@ -134,12 +136,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSData *data = [[[UIApplication sharedApplication] objectivePGP] exportKey:PGPKeys[indexPath.row] armored:YES];
-        [Loader removeKeys:@[data]];
-        
-        NSMutableArray *keys = PGPKeys.mutableCopy;
-        [keys removeObjectAtIndex:indexPath.row];
-        [[[UIApplication sharedApplication] objectivePGP] setKeys:keys];
+        [[[XApplication sharedApplication] objectivePGP] deleteKeys:@[PGPKeys[indexPath.row]]];
+        [Loader save];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
