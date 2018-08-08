@@ -84,11 +84,12 @@
     [alert.view addSubview:ai];
     
     [self presentViewController:alert animated:YES completion:^{
+        NSString *nameString = [NSString stringWithFormat:@"%@ <%@>%@", nameTF.text, emailTF.text, commentTF.text.length > 0 ?  [NSString stringWithFormat:@" (%@)", commentTF.text]:@""];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             PGPKeyGenerator *generator = [[PGPKeyGenerator alloc] init];
             generator.keyAlgorithm = PGPPublicKeyAlgorithmRSA;
             generator.keyBitsLength = keySize;
-            PGPKey *key = [generator generateFor:[NSString stringWithFormat:@"%@ <%@>%@", nameTF.text, emailTF.text, commentTF.text.length > 0 ?  [NSString stringWithFormat:@" (%@)", commentTF.text]:@""] passphrase:passwordTF.text.length > 0 ? passwordTF.text : nil];
+            PGPKey *key = [generator generateFor:nameString passphrase:passwordTF.text.length > 0 ? passwordTF.text : nil];
             NSData *publicKeyData = [key export:PGPPartialKeyPublic error:nil];
             NSData *secretKeyData = [key export:PGPPartialKeySecret error:nil];
             

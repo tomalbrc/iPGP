@@ -26,24 +26,11 @@
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"New Key" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL];
     UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"Generate Keypair" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // Show new key view controller
-        UINavigationController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewKeyTableViewControllerContainer"];
-        vc.modalPresentationStyle = UIModalPresentationFormSheet;
-        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        vc.popoverPresentationController.barButtonItem = sender;
-        // TODO: Fix casting..? // using segues!!.. l8er bruh
-        [(GenerateKeyTableViewController *)[vc viewControllers].firstObject setDelegate:self];
-        [self presentViewController:vc animated:YES completion:NULL];
+        // TODO: Popover for iPad?
+        [self performSegueWithIdentifier:@"newKeySegue" sender:self];
     }];
     UIAlertAction *importAction = [UIAlertAction actionWithTitle:@"Import ASCII Key" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UINavigationController *nc = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyInputTableViewControllerContainer"];
-        nc.popoverPresentationController.barButtonItem = sender;
-        nc.modalPresentationStyle = UIModalPresentationFormSheet;
-        
-        KeyInputTableViewController *kitvc = nc.viewControllers[0];
-        kitvc.delegate = self;
-        
-        [self presentViewController:nc animated:YES completion:NULL];
+        [self performSegueWithIdentifier:@"importKeySegue" sender:self];
     }];
     [ac addAction:cancelAction];
     [ac addAction:newAction];
@@ -52,6 +39,22 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) [[ac popoverPresentationController] setBarButtonItem:sender];
     
     [self presentViewController:ac animated:YES completion:NULL];
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"newKeySegue"] && [segue.destinationViewController isKindOfClass:[GenerateKeyTableViewController class]]) {
+        GenerateKeyTableViewController *gVC = (GenerateKeyTableViewController *)segue.destinationViewController;
+        gVC.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"importKeySegue"] && [segue.destinationViewController isKindOfClass:[KeyInputTableViewController class]]) {
+        KeyInputTableViewController *kiVC = (KeyInputTableViewController *)segue.destinationViewController;
+        kiVC.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"keyDetailSegue"] && [segue.destinationViewController isKindOfClass:[KeyDetailsTableViewController class]]) {
+        KeyDetailsTableViewController *c = (KeyDetailsTableViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        c.key = PGPKeys[indexPath.row];
+    }
 }
 
 #pragma mark - View Controller Life Cycle
@@ -122,12 +125,6 @@
     [cell setSecret:[key isSecret]];
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    KeyDetailsTableViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"KeyDetailsTableViewController"];
-    c.key = PGPKeys[indexPath.row];
-    [self.navigationController pushViewController:c animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

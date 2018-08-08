@@ -39,6 +39,7 @@
 		9AAC73541E992B66006577E2 /* KeysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC73531E992B66006577E2 /* KeysTableViewController.m */; };
 		9AAC73571E992DFB006577E2 /* KeyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC73561E992DFB006577E2 /* KeyTableViewCell.m */; };
 		9AB2BDA71EF7378F0003B2E0 /* iPGPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB2BDA61EF7378F0003B2E0 /* iPGPTests.m */; };
+		9AB4A7C01FC76B7D00441E29 /* UIViewController+DocumentBrowsable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB4A7BF1FC76B7D00441E29 /* UIViewController+DocumentBrowsable.m */; };
 		9ABA35EC1F77CC630065B2A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA35EB1F77CC630065B2A9 /* AppDelegate.m */; };
 		9ABA35EF1F77CC630065B2A9 /* KeysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA35EE1F77CC630065B2A9 /* KeysTableViewController.m */; };
 		9ABA35F41F77CC630065B2A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ABA35F21F77CC630065B2A9 /* Main.storyboard */; };
@@ -100,7 +101,6 @@
 		9A3E50481F2025C900093D37 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A44327E1F03FAF500DF40F1 /* Loader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Loader.h; sourceTree = "<group>"; };
 		9A44327F1F03FAF500DF40F1 /* Loader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Loader.m; sourceTree = "<group>"; };
-		9A4432811F05A3E200DF40F1 /* iPGP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPGP.entitlements; sourceTree = "<group>"; };
 		9A44F2111F88EE7300629D39 /* DecryptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecryptViewController.h; sourceTree = "<group>"; };
 		9A44F2121F88EE7300629D39 /* DecryptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecryptViewController.m; sourceTree = "<group>"; };
 		9A44F2161F88F24B00629D39 /* GenerateKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateKeyViewController.h; sourceTree = "<group>"; };
@@ -134,6 +134,9 @@
 		9AB2BDA41EF7378F0003B2E0 /* iPGPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPGPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB2BDA61EF7378F0003B2E0 /* iPGPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPGPTests.m; sourceTree = "<group>"; };
 		9AB2BDA81EF7378F0003B2E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AB4A7BD1FC63AD400441E29 /* iPGP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iPGP.entitlements; sourceTree = "<group>"; };
+		9AB4A7BE1FC76B7D00441E29 /* UIViewController+DocumentBrowsable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DocumentBrowsable.h"; sourceTree = "<group>"; };
+		9AB4A7BF1FC76B7D00441E29 /* UIViewController+DocumentBrowsable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DocumentBrowsable.m"; sourceTree = "<group>"; };
 		9ABA35E81F77CC630065B2A9 /* iPGP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPGP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ABA35EA1F77CC630065B2A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ABA35EB1F77CC630065B2A9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -266,9 +269,12 @@
 		9A184D5E1E9258CB004E1211 /* iPGP */ = {
 			isa = PBXGroup;
 			children = (
+				9AB4A7BD1FC63AD400441E29 /* iPGP.entitlements */,
 				9A184D621E9258CB004E1211 /* AppDelegate.h */,
 				9A184D631E9258CB004E1211 /* AppDelegate.m */,
 				9AB0DED21F08215400503C82 /* Types.h */,
+				9AB4A7BE1FC76B7D00441E29 /* UIViewController+DocumentBrowsable.h */,
+				9AB4A7BF1FC76B7D00441E29 /* UIViewController+DocumentBrowsable.m */,
 				9A0EE2C91E9DCF2B009EFE08 /* Encrypt MVC */,
 				9A0EE2CA1E9DCF33009EFE08 /* Decrypt MVC */,
 				9A0EE2C81E9DCF24009EFE08 /* Keys MVC */,
@@ -286,7 +292,6 @@
 			children = (
 				9A184D701E9258CB004E1211 /* LaunchScreen.storyboard */,
 				9A184D731E9258CB004E1211 /* Info.plist */,
-				9A4432811F05A3E200DF40F1 /* iPGP.entitlements */,
 				9A184D601E9258CB004E1211 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -524,7 +529,7 @@
 								enabled = 0;
 							};
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -779,6 +784,7 @@
 				9A4432801F03FAF500DF40F1 /* Loader.m in Sources */,
 				9A0EE2CD1E9DCFA3009EFE08 /* RecipientsTableViewController.m in Sources */,
 				9ACA615F1F98C17300A6424A /* XApplication+Additions.m in Sources */,
+				9AB4A7C01FC76B7D00441E29 /* UIViewController+DocumentBrowsable.m in Sources */,
 				9ADBB7C21F1FE37D00E1EFCE /* DocumentManager.m in Sources */,
 				9ACA615C1F98C10C00A6424A /* PGPPartialKey+Additions.m in Sources */,
 				9ACA61621F98C1CC00A6424A /* NSString+Additions.m in Sources */,
