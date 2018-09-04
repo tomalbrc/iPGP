@@ -41,6 +41,8 @@
 }
 
 - (IBAction)sign:(id)sender {
+    
+    
     [[XApplication sharedApplication].objectivePGP sign:_userInputViewController.userData usingKey:[XApplication.sharedApplication.objectivePGP findKeyWithIdentifier:@"DivineMomentOfTruth <olaf.kaiser@aol.com>"] passphrase:@"arschlecker123" detached:NO error:NULL];
 }
 

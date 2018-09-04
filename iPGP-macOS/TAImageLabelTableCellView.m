@@ -12,6 +12,16 @@
 
 @implementation TAImageLabelTableCellView
 
+- (NSMenu *)menuForEvent:(NSEvent *)event {
+    NSMenu *menu = NULL;
+    if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown || 1) {
+        menu = [[NSMenu alloc] initWithTitle:@"Cell"];
+        [menu addItem:[[NSMenuItem alloc] initWithTitle:@"dsadsa" action:0 keyEquivalent:@" "]];
+        return menu;
+    }
+    return menu;
+}
+
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
     if (backgroundStyle == NSBackgroundStyleDark) {
         labelImageView.image = [labelImageView.image tintedImageWithColor:[NSColor whiteColor]];

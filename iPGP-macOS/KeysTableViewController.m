@@ -33,6 +33,7 @@ static const NSString* TextCell = @"TextCell";
     } else if ([segue.destinationController isKindOfClass:[GenerateKeyViewController class]]) {
         GenerateKeyViewController *vc = segue.destinationController;
         vc.delegate = self;
+        [vc setPreferredContentSize:vc.view.bounds.size];
     }
 }
 

@@ -66,12 +66,14 @@
     if (pbres.count > 1)
         return NO;
     
-    NSURL *url = [NSURL URLWithString:[pbres firstObject]];
+    
+    NSArray *files = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
     
     NSError *error;
-    NSDictionary *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:url.path error:&error];
+    NSDictionary *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:files.firstObject error:&error];
+    NSLog(@"Attribute: %@", attributes[NSFileType]);
     if (!error && [attributes[NSFileType] isEqualToString:NSFileTypeRegular]) {
-        self.fileURL = url;
+        self.fileURL = [NSURL fileURLWithPath:files.firstObject];
         return YES;
     }
     return NO;
@@ -110,7 +112,7 @@
     
     NSError *error;
     NSDictionary *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:_fileURL.path error:&error];
-    if (!error && ![attributes[NSFileType] isEqualToString:NSFileTypeDirectory]) {
+    if (!error && [attributes[NSFileType] isEqualToString:NSFileTypeRegular]) {
         imageView.image = [NSWorkspace.sharedWorkspace iconForFile:_fileURL.path];
         imageView.image.size = NSMakeSize(96, 96);
         

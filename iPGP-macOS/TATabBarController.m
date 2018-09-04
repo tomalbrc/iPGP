@@ -26,6 +26,8 @@
     [super viewDidLoad];
     // Do view setup here.
     
+    self.view.wantsLayer = YES;
+    self.view.layer.backgroundColor = [NSColor clearColor].CGColor;
     
     buttons = self.buttonBarStackView.arrangedSubviews;
     for (int i = 0; i < buttons.count; i++) {
